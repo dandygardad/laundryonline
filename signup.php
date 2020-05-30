@@ -63,7 +63,7 @@ if (isset($_POST['submit'])){
                 <p>Password :</p>
                 <input type="password" name="password">
                 <p>Nomor Telepon :</p>
-                <input type="text" name="nomorTelepon">
+                <input type="tel" name="nomorTelepon" placeholder="081234567890" pattern="[0]{1}[8]{1}[1-9]{1}[0-9]{9}" required>
                 <p>
                     <button name="submit">Signup</button>
                 </p>
