@@ -1,7 +1,10 @@
-<!DOCTYPE html>
 <?php
 session_start();
 require_once "database.php";
+
+if(!isset($_SESSION['email']) == 0 ){
+    header('Location: dashboard.php');
+}
 
 if (isset($_POST['submit'])){
 
@@ -27,6 +30,7 @@ if (isset($_POST['submit'])){
 
     //Input Data
     else{
+        $_SESSION['message'] = 'Data sudah masuk, silahkan kembali <a href="/login.php">Login</a> ';
         echo '<div class="box"><div class="square">';
         echo $_SESSION['message'];
         echo '</div></div>';
@@ -44,6 +48,7 @@ if (isset($_POST['submit'])){
 } 
 ?>
 
+<!DOCTYPE html>
 <head>
     <title>Signup - Laundry OnLine</title>
     <link rel="stylesheet" type="text/css" href="signup.css">

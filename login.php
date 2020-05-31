@@ -1,5 +1,11 @@
 <?php
+session_start();
 require_once "database.php";
+
+//Jika user sudah pernah login maka akan diarahkan ke halaman profile
+if(!isset($_SESSION['email']) == 0 ){
+    header('Location: dashboard.php');
+}
 
 if(isset($_POST['submit'])){
     //Init
@@ -11,24 +17,28 @@ if(isset($_POST['submit'])){
     $stmt = $pdo -> prepare($sql);
     $stmt -> bindParam(':email', $email);
     $stmt -> execute();
-
     $row = $stmt -> fetch(PDO::FETCH_ASSOC);
 
+    //Mengecek apakah password cocok
     if (password_verify($password, $row['password'])){
-        echo '<div class="box"><div class="square">';
-        echo("Login berhasil");
-        echo '</div></div>';
+        //Memasukkan data ke session
+        $id = $row['id'];
+        $_SESSION['name'] = $row['name'];
+        $_SESSION['email'] = $email;
+        $_SESSION['nomortelepon'] = $row['nomor_telepon'];
+        setcookie('user_id', $id, time()+(7 * 24 * 60 * 60), '/');
+        header("Location: dashboard.php");
     }
+    //Pesan error jika e-mail atau password salah
     else{
         echo '<div class="box"><div class="square">';
         echo("E-mail atau password salah, silahkan ulangi kembali");
         echo '</div></div>';
     }
 }
-
-
 ?>
 
+<!DOCTYPE HTML>
 <head>
     <title>Login - Laundry OnLine</title>
     <link rel="stylesheet" type="text/css" href="login.css">
