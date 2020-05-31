@@ -37,7 +37,7 @@ if (isset($_POST['submit'])){
         $stmt->execute(array(
           ':name' => $_POST['name'],
           ':email' => $_POST['email'],
-          ':password' => $_POST['password'],
+          ':password' => password_hash($_POST['password'],PASSWORD_DEFAULT),
           ':nomor_telepon' => $_POST['nomorTelepon']));
         $_SESSION['message'] = 'Data sudah masuk, silahkan kembali <a href="/login.php">Login</a> ';
     }
@@ -60,6 +60,7 @@ if (isset($_POST['submit'])){
                 <input type="text" name="name">
                 <p>E-Mail :</p>
                 <input type="email" name="email">
+                <!-- Remind me to add showPassword -->
                 <p>Password :</p>
                 <input type="password" name="password">
                 <p>Nomor Telepon :</p>
@@ -68,6 +69,10 @@ if (isset($_POST['submit'])){
                     <button name="submit">Signup</button>
                 </p>
                 <br>
+                <p>
+                    <a href="/login.php">
+                        Sudah mendaftar? Silahkan login</a>
+                </p>
                 <p>
                     <a href="/index.php">
                         <-- Back to Home</a>
