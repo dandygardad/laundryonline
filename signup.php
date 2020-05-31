@@ -62,14 +62,15 @@ if (isset($_POST['submit'])){
             <br>     
             <form method="POST">
                 <p>Nama :</p>
-                <input type="text" name="name">
+                <input type="text" name="name" placeholder="Masukkan nama">
                 <p>E-Mail :</p>
-                <input type="email" name="email">
-                <!-- Remind me to add showPassword -->
-                <p>Password :</p>
-                <input type="password" name="password">
+                <input type="email" name="email" placeholder="Masukkan e-mail">
                 <p>Nomor Telepon :</p>
-                <input type="tel" name="nomorTelepon" placeholder="081234567890" pattern="[0]{1}[8]{1}[1-9]{1}[0-9]{9}" required>
+                <input type="tel" name="nomorTelepon" placeholder="081234567890" pattern=".{10,14}" required>
+                <p>Password :</p>
+                <input type="password" name="password" id="password" pattern=".{8,}" required title="Minimum 8 karakter" placeholder="Masukkan password">
+                <input type="checkbox" onclick="myFunction()"> Show Password
+                <br><br>
                 <p>
                     <button name="submit">Signup</button>
                 </p>
@@ -86,3 +87,15 @@ if (isset($_POST['submit'])){
         </div>
     </div>
 </body>
+<script type="application/javascript">
+    //Untuk memunculkan password di form
+    function myFunction(){
+        var x = document.getElementById("password");
+        if (x.type === "password"){
+            x.type = "text";
+        } 
+        else{
+            x.type = "password";
+        }
+    }
+</script>

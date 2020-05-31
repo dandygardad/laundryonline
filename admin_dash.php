@@ -4,20 +4,20 @@ require_once "database.php";
 
 //Jika user belum login dan membuka ini, maka langsung diarahkan ke halaman login
 if(isset($_SESSION['email']) == 0){
-    header('Location: login.php');
+    exit("<h1>Access Denied</h1>");
 }
 
-//Jika admin login, maka langsung diarahkan ke halaman dashboard admin
+//Akses selain e-mail admin akan ditolak
 //Ubah e-mailnya jika ingin mengganti akun admin
-if($_SESSION['email'] == 'dandygarda@gmail.com'){
-    header('Location: admin_dash.php');
+if($_SESSION['email'] != 'dandygarda@gmail.com'){
+    exit("<h1>Access Denied</h1>");
 }
 
 ?>
 
 <!DOCTYPE html>
 <head>
-    <title>Selamat Datang di Laundry OnLine</title>
+    <title>Administrator</title>
 </head>
 <body>
     <h1>Selamat datang <?php echo $_SESSION['name']; ?></h1>
