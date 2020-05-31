@@ -7,3 +7,14 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE 'order' (
+  'id' INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  'jenis_laundry' INT(1) DEFAULT NULL,
+  'jumlah_barang' INT(3) DEFAULT NULL,
+  'waktu_penjemputan' DATETIME DEFAULT NULL,
+  'waktu_pengantaran' DATETIME DEFAULT NULL,
+  'alamat' VARCHAR (80) DEFAULT NULL,
+  'garis_lintang' FLOAT(10, 6) DEFAULT NULL,
+  'garis_bujur' FLOAT(10, 6) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
