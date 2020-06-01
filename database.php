@@ -33,12 +33,50 @@ class database{
         return $result -> rowCount();
     }
 
+    public function banyak_data(){
+        $result = $this -> pdo -> query("SELECT COUNT(*) FROM users");
+        //$result -> execute();
+        return $result -> fetchColumn();
+    }
+
     public function login($email){
         $sql = "SELECT * FROM users WHERE email = :email";
-        $stmt =$this -> pdo -> prepare($sql);
+        $stmt = $this -> pdo -> prepare($sql);
         $stmt -> bindParam(':email', $email);
         $stmt -> execute();
         return $stmt -> fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function showData(){
+        $sql = "SELECT id, name, email, password, nomor_telepon FROM users";
+        $stmt = $this -> pdo ->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function deleteData($id){
+        $sql = "DELETE FROM users WHERE id = :zip";
+        $stmt = $this-> pdo ->prepare($sql);
+        $stmt->execute(array(':zip' => $id));
+        return $stmt;
+    }
+
+    public function getData($edit){
+        $sql = "SELECT * FROM users WHERE id = :zip";
+        $stmt = $this -> pdo ->prepare($sql);
+        $stmt->execute(array(':zip' => $edit));
+        return $stmt -> fetch();
+    }
+
+    public function updateData($nama, $email, $password, $nomor_telepon, $id){
+        $sql = "UPDATE users SET name=:name, email=:email, password=:password, nomor_telepon=:nomor_telepon WHERE id=:id";
+        $stmt = $this -> pdo -> prepare($sql);
+        $stmt->execute(array(
+            ':name' => $nama,
+            ':email' => $email,
+            ':password' => password_hash($password, PASSWORD_DEFAULT),
+            ':nomor_telepon' => $nomor_telepon,
+            ':id' => $id));
+        return $stmt;
     }
 }
 
