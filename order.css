@@ -5,7 +5,3 @@ body {
   background-size: cover;
   -o-background-size: cover;
 }
-
-#sticky-footer {
-  flex-shrink: none;
-}
