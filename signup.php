@@ -46,8 +46,8 @@ if (isset($_POST['submit'])){
 <!DOCTYPE html>
 <head>
     <title>Signup - Laundry OnLine</title>
-    <link rel="stylesheet" type="text/css" href="signup.css">
-    <link rel="stylesheet" type="text/css" href="signup_2.css">
+    <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <link rel="stylesheet" type="text/css" href="css/signup_2.css">
 </head>
 
 <body>
