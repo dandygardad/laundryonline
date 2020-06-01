@@ -10,9 +10,16 @@ $(function(){
         labels: {
             previous : 'Previous',
             next : 'Next Step',
-            finish : 'Submit',
+            finish :'Submit',
             current : ''
         },
+
+        onFinished: function (event, currentIndex) {
+            $("#form").submit();
+            alert("Pesanan Berhasil Ditambahkan!");
+            location.href="index.html"
+        },
+
         onStepChanging: function (event, currentIndex, newIndex) { 
             var jenisLaundry = $('form input[type=radio]:checked').val();
             var jumlahBarang = $('#jumlahBarang').val();
@@ -39,7 +46,4 @@ $(function(){
         showOn: "both",
         buttonText : '<i class="zmdi zmdi-chevron-down"></i>',
     });
-    // Date Picker
-    var dp1 = $('#dp1').datepicker().data('datepicker');
-    dp1.selectDate(new Date());
 });

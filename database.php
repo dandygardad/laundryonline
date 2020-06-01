@@ -78,6 +78,20 @@ class database{
             ':id' => $id));
         return $stmt;
     }
+
+    public function tambah_pesanan($jenis_laundry, $jumlah_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan){
+        $sql = "INSERT INTO order (jenis_laundry, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan) 
+        VALUES (:jenis_laundry, :jumlah_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan)";
+        $stmt = $this-> pdo-> prepare($sql);
+        $stmt->execute(array(
+          ':jenis_laundry' => $jenis_laundry,
+          ':jumlah_barang' => $jumlah_barang,
+          ':waktu_pengambilan' => $waktu_pengambilan,
+          ':waktu_pengantaran' => $waktu_pengantaran,
+          ':alamat' => $alamat,
+          ':catatan' => $catatan));
+        return $stmt;
+    }
 }
 
 ?>

@@ -1,6 +1,30 @@
 <?php
-
+session_start();
 require_once "database.php";
+
+$pdo = new database();
+
+if (isset($_POST['submit'])){
+
+    //Mencegah data pesanan kosong
+    if(empty($_POST['jenis_laundry']) || empty($_POST['jumlahBarang']) || empty($_POST['tanggalPengambilan']) || empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan'])) {
+        echo '<div class="box"><div class="square">';
+        echo("Field tidak boleh kosong!");
+        echo '</div></div>';
+    }
+
+    //Memasukkan Data Pesanan
+    else{
+        $_SESSION['message'] = 'Pesanan telah ditambahkan, Silahkan kembali <a href="/index.html">Home</a> ';
+        echo '<div class="box"><div class="square">';
+        echo $_SESSION['message'];
+        echo '</div></div>';
+        unset($_SESSION['message']);
+        
+        //Masukkan data pesanan ke database
+        $pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], $_POST['catatan']);
+    }
+} 
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +36,6 @@ require_once "database.php";
 	<link rel="stylesheet" href="css/order.css"/>
 	<link rel="stylesheet" type="text/css" href="css/roboto-font.css">
 	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-	<link rel="stylesheet" href="css/datepicker.min.css">
 </head>
 <body>
 	<div class="page-content" style="background-image: url('pictures/login.jpg')">
@@ -34,8 +57,8 @@ require_once "database.php";
                                 <h3>Silahkan Isi Form Pemesanan Anda</h3>
                                 <div id="radio">
                                     <label>Pilih Jenis Laundry :</label>
-                                    <input type="radio" name="jenis_laundry" value="kiloan" checked class="radio-1"> Kiloan
-                                      <input type="radio" name="jenis_launry" value="satuan"> Satuan
+                                    <input type="radio" name="jenis_laundry" value="kiloan"> Kiloan
+                                    <input type="radio" name="jenis_launry" value="satuan"> Satuan
 								</div>
 								<div class="service-desc-box">
                             		<span class="service-desc-box-text">
@@ -45,7 +68,7 @@ require_once "database.php";
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="jumlahBarang" name="jumlahBarang" required>
+											<input type="number" class="form-control" id="jumlahBarang" name="jumlahBarang" min="1" max="50" required>
 											<span class="label">Jumlah Barang</span>
 					  						<span class="border"></span>
 										</label>
@@ -53,17 +76,17 @@ require_once "database.php";
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
-										<label class="form-row-inner" for="tanggalAmbil">Pilih Tanggal Pengambilan</label>
+										<label class="form-row-inner" for="tanggalPengambilan">Pilih Tanggal Pengambilan</label>
 										<div class="form-holder">
-											<input type="text" class="form-control datepicker-here" data-language='en' data-date-format="dd - mm- yyyy" id="tanggalPengambilan">
+											<input type="date" id="tanggalPengambilan" name="tanggalPengambilan">
 										</div>
 									</div>
 	                    		</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
-										<label class="form-row-inner" for="tanggalAntar">Pilih Tanggal Pengantaran</label>
+										<label class="form-row-inner" for="tanggalPengantaran">Pilih Tanggal Pengantaran</label>
 										<div class="form-holder">
-											<input type="text" class="form-control datepicker-here" data-language='en' data-date-format="dd - mm - yyyy" id="tanggalPengantaran">
+											<input type="date" id="tanggalPengantaran" name="tanggalPengantaran">
 										</div>
 									</div>
 	                    		</div>
@@ -223,8 +246,6 @@ require_once "database.php";
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery.steps.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/datepicker.js"></script>
-	<script src="js/datepicker.en.js"></script>
+	<script src="js/order.js"></script>
 </body>
 </html>
