@@ -1,0 +1,60 @@
+.onclick {
+    list-style-type: none;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    background-color: #1f8ceb;
+    font-family: Myfont, sans-serif !important;
+
+  }
+  img {
+    height: 20m;
+  }
+  li {
+    float: right;
+  }
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #1f8ceb;;
+  }
+
+  body {
+    font-family: 'Source Sans Pro';
+    margin:0;
+    color:white;
+}
+
+.container {
+    padding: 1em 80px;
+    background: white;
+    color: blue;
+}
+
+.container2 {
+    padding: 14em 1em;
+    background: #16449b;
+}
+
+.container3 {
+    padding: 13em 1em;
+    background:#1f8ceb;
+}
+.container4 {
+    padding: 12em 1em;
+    background:white;
+    color: blue;
+}
+span {
+    /* display:block; */
+    font-size:1.4em;
+
+    color: blue;
+}
+

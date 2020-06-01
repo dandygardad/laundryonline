@@ -1,169 +1,225 @@
-<!DOCTYPE HTML>
 <?php
 
 require_once "database.php";
 
 ?>
-
-<html lang="id">
-    <head>
-        <link rel="stylesheet" type="text/css" href="order.css">
-        <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
-    </head>
-   
-    <body>
-        <div class="container">
-            <div class="card border-0 shadow my-5">
-                <div class="card-body p-5">
-                    <section id="content">
-                        <div class="container">
-                            <div id="banner-mobile" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active ">
-                                        <img src="https://s3-ap-southeast-1.amazonaws.com/apic-asset/services-banner/18_serviceBannerPhoto7863.jpg" onError="this.onerror=null;this.src='http://via.placeholder.com/500x350'" class="d-block d-sm-none w-100">
-                                    </div>
-                                    <div class="carousel-item  ">
-                                        <img src="https://s3-ap-southeast-1.amazonaws.com/apic-asset/services-banner/19_serviceBannerPhoto7596.jpg" onError="this.onerror=null;this.src='http://via.placeholder.com/500x350'" class="d-block d-sm-none w-100">
-                                    </div>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Wizard-v3</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/roboto-font.css">
+	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<!-- datepicker -->
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+	<div class="page-content" style="background-image: url('pictures/login.jpg')">
+		<div class="wizard-v3-content">
+			<div class="wizard-form">
+				<div class="wizard-header">
+					<h3 class="heading">Laundry onLine</h3>
+					<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
+				</div>
+		        <form class="form-register" action="#" method="post">
+		        	<div id="form-total">
+		        		<!-- Pilihan 1 -->
+			            <h2>
+			            	<span class="step-icon"><i class="zmdi zmdi-shopping-cart"></i></span>
+			            	<span class="step-text">Pemesanan</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+                                <h3>Silahkan Isi Form Pemesanan Anda</h3>
+                                <div id="radio">
+                                    <label>Pilih Jenis Laundry :</label>
+                                    <input type="radio" name="jenis_laundry" value="kiloan" checked class="radio-1"> Kiloan
+                                      <input type="radio" name="jenis_launry" value="satuan"> Satuan
                                 </div>
-                            </div>
-                            <div class="row mt-5 row mt-3">
-                                <div class="col-sm-8 col-12">
-                                    <div class="question_service_ttl">
-                                                    Jasa Laundry Antar Jemput Berbasis Online
-                                    </div>
-                                    <div class="card question_left mb-6">
-                                        <form role="form" class="registration-form" id="form" action="" method="POST">
-                                            <div class="card-body">
-                                                <fieldset>
-                                                    <div class="p-2">
-                                                        <div class="title">Pilih Jenis Laundry</div>
-                                                        <div class="row mb-3 p-2">
-                                                            <div class="form-check px-2 col-sm-6">
-                                                                <label class="form-check-label font-weight-normal">
-                                                                    <input class="form-check-input ac-type" type="radio" name="laundry-weight" 
-                                                                    id="laundry-weight" value="laundry-weight"
-                                                                    onclick="changeService(550)"
-                                                                    checked
-                                                                    required> Kiloan
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check px-2 col-sm-6">
-                                                                <label class="form-check-label font-weight-normal">
-                                                                    <input class="form-check-input ac-type" type="radio" name="laundry-perPiece"
-                                                                    id="laundry-perPiece" value="laundry-perPiece"
-                                                                    onclick="changeService(555)"
-                                                                    required> Satuan
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="title">Pilih Waktu Pengambilan</div>
-                                                        <div class="form-group mb-4 p-1">
-                                                            <label for="dateInput">Tanggal</label>
-                                                            <datepicker :disabled="datepicker.disabled" v-model="jobDatePicker" format="yyyy-MM-dd"
-                                                            name="projectData[dateInput]" input-class="form-control input_text" id="dateInput"
-                                                            placeholder="Click here to select a date" required></datepicker>
-                                                        </div>
-                                                        <div class="form-group" id="datetimehoursdisplay">
-                                                            <label>Waktu</label>
-                                                            <select
-                                                            v-validate="'required'"
-                                                            data-vv-scope="step1"
-                                                            name="projectData[hourInput]"
-                                                            :class="{'input': true, 'is-danger': errors.has('step1.projectData[hourInput]') }"
-                                                            v-model="jobHour" id="hourInput" class="form-control">
-                                                                <option value=''>Waktu Pengambilan</option>
-                                                                <option value="8:00" data-value="8">8:00</option>
-                                                                <option value="9:00" data-value="9">9:00</option>
-                                                                <option value="10:00" data-value="10">10:00</option>
-                                                                <option value="11:00" data-value="11">11:00</option>
-                                                                <option value="12:00" data-value="12">12:00</option>
-                                                                <option value="13:00" data-value="13">13:00</option>
-                                                                <option value="14:00" data-value="14">14:00</option>
-                                                                <option value="15:00" data-value="15">15:00</option>
-                                                                <option value="16:00" data-value="16">16:00</option>
-                                                                <option value="17:00" data-value="17">17:00</option>
-                                                                <option value="18:00" data-value="18">18:00</option>
-                                                            </select>
-                                                            <select
-                                                            v-validate="'required'"
-                                                            data-vv-scope="step1"
-                                                            name="projectData[hourInput]"
-                                                            :class="{'input': true, 'is-danger': errors.has('step1.projectData[hourInput]') }"
-                                                            v-model="jobHour" id="hourInputWeekend" class="form-control" style="display: none;">
-                                                                <option value=''>Kapan anda membutuhkan pengerjaan</option>
-                                                                <option value="8:00" data-value="8">8:00</option>
-                                                                <option value="9:00" data-value="9">9:00</option>
-                                                                <option value="10:00" data-value="10">10:00</option>
-                                                                <option value="11:00" data-value="11">11:00</option>
-                                                                <option value="12:00" data-value="12">12:00</option>
-                                                                <option value="13:00" data-value="13">13:00</option>
-                                                                <option value="14:00" data-value="14">14:00</option>
-                                                                <option value="15:00" data-value="15">15:00</option>
-                                                                <option value="16:00" data-value="16">16:00</option>
-                                                                <option value="17:00" data-value="17">17:00</option>
-                                                                <option value="18:00" data-value="18">18:00</option>
-                                                            </select>
-                                                            <span v-show="errors.has('step1.projectData[hourInput]')" class="help is-danger">Kolom harus diisi</span>
-                                                        </div>
-                                                        <div class="title">Pilih Waktu Pengantaran</div>
-                                                        <div class="form-group mb-4 p-1">
-                                                            <label for="dateInputOther">Tanggal Pengantaran</label>
-                                                            <input type="text" class="input_text form-control" v-bind:value="deliveryDate"
-                                                                id="dateInputOther" name="projectData[dateInputOther]"
-                                                                placeholder="Tanggal Pengantaran" readonly>
-                                                        </div>
-                                                        <div class="form-group mb-4 p-1" id="datetimehoursdisplay">
-                                                            <label>Waktu Pengantaran</label>
-                                                            <select
-                                                            v-validate="'required'"
-                                                            data-vv-scope="step1"
-                                                            name="projectData[hourInputOther]"
-                                                            :class="{'input': true, 'is-danger': errors.has('step1.projectData[hourInputOther]') }"
-                                                            class="form-control" id="hourInputOther">
-                                                                <option value=''>Waktu Pengantaran</option>
-                                                                <option value="8:00" data-value="8:00" >8:00</option>
-                                                                <option value="9:00" data-value="9:00" >9:00</option>
-                                                                <option value="10:00" data-value="10:00" >10:00</option>
-                                                                <option value="11:00" data-value="11:00" >11:00</option>
-                                                                <option value="12:00" data-value="12:00" >12:00</option>
-                                                                <option value="13:00" data-value="13:00" >13:00</option>
-                                                                <option value="14:00" data-value="14:00" >14:00</option>
-                                                                <option value="15:00" data-value="15:00" >15:00</option>
-                                                                <option value="16:00" data-value="16:00" >16:00</option>
-                                                                <option value="17:00" data-value="17:00" >17:00</option>
-                                                                <option value="18:00" data-value="18:00" >18:00</option>
-                                                            </select>
-                                                            <span v-show="errors.has('step1.projectData[hourInputOther]')" class="help is-danger">Kolom harus diisi</span>
-                                                        </div>
-                                                        <div class="price">
-                                                            <div class="service_description my-4" id="ac-installation-note" style="display: none">
-                                                                <div class="notes">
-                                                                    Untuk pemindahan AC ke bangunan berbeda, biaya akan ditanggung oleh Pelanggan
-                                                                </div>
-                                                            </div>
-                                                                                                Harga Total
-                                                            <span v-if="isCalculating == false" class="sub-total" id="sub-total">{{ convertPrice }}</span>
-                                                        </div>
-                                                        <button class="continue" type="button" v-on:click="currentStep2('step1')" v-show="validStep1">
-                                                            Lanjut<i class="fa fa-arrow-right ml-2"></i>
-                                                        </button>
-                                                    </div>
-                                                </fieldset>
+			                	<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="form-row-inner">
+                                            <div class="title">Pilih Waktu Pengambilan</div>
+                                            <div class="form-group mb-4 p-1">
+                                                <label for="dateInput">Tanggal Pengambilan</label>
+                                                <datepicker :disabled="datepicker.disabled" v-model="jobDatePicker" format="yyyy-MM-dd"
+                                                name="projectData[dateInput]" input-class="form-control input_text" id="dateInput"
+                                                placeholder="Click here to select a date" required></datepicker>
+                                                <input type="text" class="input_text form-control" v-bind:value="deliveryDate"
+                                                id="dateInputOther" name="projectData[dateInputOther]"
+                                                placeholder="Tanggal Pengantaran" readonly>
+                                                <span v-show="errors.has('step1.projectData[hourInputOther]')" class="help is-danger">Kolom harus diisi</span>
                                             </div>
-                                        </form>
-                                    </div>
+										</label>
+									</div>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-                    <div class="container text-center">
-                        <small>Copyright &copy; LoL</small>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </body>
+                                <div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="form-row-inner">
+                                            <div class="title">Pilih Waktu Pengantaran</div>
+                                            <div class="form-group mb-4 p-1">
+                                                <label for="dateInputOther">Tanggal Pengantaran</label>
+                                                <input type="text" class="input_text form-control" v-bind:value="deliveryDate"
+                                                    id="dateInputOther" name="projectData[dateInputOther]"
+                                                    placeholder="Tanggal Pengantaran" readonly>
+                                                    <span v-show="errors.has('step1.projectData[hourInputOther]')" class="help is-danger">Kolom harus diisi</span>
+                                            </div>
+										</label>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="form-row-inner">
+											<input type="text" class="form-control" id="catatan" name="catatan" required>
+											<span class="label">Tambahkan Catatan</span>
+					  						<span class="border"></span>
+										</label>
+									</div>
+								</div>
+                                <div class="price">
+                                        Harga Total
+                                </div>
+							</div>
+			            </section>
+						<!-- Pilihan 2 -->
+			            <h2>
+			            	<span class="step-icon"><i class="zmdi zmdi-home"></i></span>
+			            	<span class="step-text">Alamat</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+			                	<h3>Harap Masukkan Alamat Anda</h3>
+								<div class="form-row">
+									<div class="form-holder form-holder-1">
+										<label class="form-row-inner">
+											<input type="text" class="form-control" id="alamat" name="alamat" required>
+											<span class="label">Alamat Lengkap</span>
+					  						<span class="border"></span>
+										</label>
+									</div>
+								</div>
+							</div>
+			            </section>
+			            <!-- Pilihan 3 -->
+			            <h2>
+			            	<span class="step-icon"><i class="zmdi zmdi-card"></i></span>
+			            	<span class="step-text">Pembayaran</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+			                	<h3>Payment Information:</h3>
+			                	<div class="form-row">
+			                		<div class="form-holder form-holder-2">
+			                			<input type="radio" name="radio1" id="pay-1" value="pay-1" checked>
+			                			<label class="pay-1-label" for="pay-1"><img src="pictures/creditcard_icon.png" alt="pay-1">Credit Card</label>
+										<input type="radio" name="radio1" id="pay-2" value="pay-2">
+										<label class="pay-2-label" for="pay-2"><img src="pictures/paypal_icon.png" alt="pay-2">Paypal</label>
+			                		</div>
+			                	</div>
+			                	<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="form-row-inner">
+											<input type="text" class="form-control" id="holder" name="holder" required>
+											<span class="label">Holder Name*</span>
+					  						<span class="border"></span>
+										</label>
+									</div>
+								</div>
+			                	<div class="form-row">
+									<div class="form-holder">
+										<label class="form-row-inner">
+											<input type="text" class="form-control" id="card" name="card" required>
+											<span class="label">Card Number*</span>
+											<span class="border"></span>
+										</label>
+									</div>
+									<div class="form-holder">
+										<label class="form-row-inner">
+											<input type="text" class="form-control" id="cvc" name="cvc" required>
+											<span class="label">CVC*</span>
+											<span class="border"></span>
+										</label>
+									</div>
+								</div>
+			                	<div class="form-row form-row-date form-row-date-1">
+									<div class="form-holder form-holder-2">
+										<label for="date" class="special-label">Expiry Date*:</label>
+										<select name="month_1" id="month_1">
+											<option value="Month" disabled selected>Month</option>
+											<option value="Feb">Feb</option>
+											<option value="Mar">Mar</option>
+											<option value="Apr">Apr</option>
+											<option value="May">May</option>
+										</select>
+										<select name="year_1" id="year_1">
+											<option value="Year" disabled selected>Year</option>
+											<option value="2017">2017</option>
+											<option value="2016">2016</option>
+											<option value="2015">2015</option>
+											<option value="2014">2014</option>
+											<option value="2013">2013</option>
+										</select>
+									</div>
+								</div>
+							</div>
+			            </section>
+			            <!-- Pilihan 4 -->
+			            <h2>
+			            	<span class="step-icon"><i class="zmdi zmdi-receipt"></i></span>
+			            	<span class="step-text">Konfirmasi</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+			                	<h3>Detail Konfirmasi :</h3>
+			                	<div class="form-row table-responsive">
+									<table class="table">
+										<tbody>
+											<tr class="space-row">
+                                                <th>Jenis Laundry</th>
+												<td id="jenis_laundry-val"></td>
+											</tr>
+											<tr class="space-row">
+												<th>Jumlah Barang:</th>
+												<td id="jumlah_barang-val"></td>
+											</tr>
+											<tr class="space-row">
+												<th>Waktu Pengambilan:</th>
+												<td id="waktu_pengambilan-val"></td>
+											</tr>
+											<tr class="space-row">
+                                                <th>Waktu Pengantaran:</th>
+                                                <td id="waktu_pengantaran-val"></td>
+											</tr>
+											<tr class="space-row">
+												<th>Alamat:</th>
+												<td id="alamat-val"></td>
+                                            </tr>
+                                            <tr class="space-row">
+												<th>Catatan Tambahan:</th>
+												<td id="catatan-val"></td>
+                                            </tr>
+                                            <tr class="space-row">
+												<th>Harga:</th>
+												<td id="harga-val"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+			            </section>
+		        	</div>
+		        </form>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.steps.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
 </html>
