@@ -8,7 +8,7 @@ require_once "database.php";
 <html lang="id">
     <head>
         <link rel="stylesheet" type="text/css" href="order.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
     </head>
    
     <body>
