@@ -1,7 +1,10 @@
 <?php
 session_start();
 require_once "database.php";
+//Memanggil dari kelas database
+$pdo = new database();
 
+//Jika sudah terlogin maka akan langsung dipindahkan ke profile
 if(!isset($_SESSION['email']) == 0 ){
     header('Location: dashboard.php');
 }
@@ -10,9 +13,7 @@ if (isset($_POST['submit'])){
 
     //Mencegah ada e-mail yang sama dalam database
     $email = $_POST['email'];
-    $result = $pdo -> prepare("SELECT email FROM users WHERE email = :email");
-    $result -> bindParam(':email', $email);
-    $result -> execute();
+    $check_data = $pdo->check_data($email);
 
     //Mencegah data kosong masuk database
     if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['nomorTelepon'])) {
@@ -22,7 +23,7 @@ if (isset($_POST['submit'])){
     }
 
     //Pesan yang muncul jika sudah ada e-mail dalam database
-    else if($result->rowCount() > 0){
+    else if($check_data > 0){
         echo '<div class="box"><div class="square">';
         echo("E-mail sudah ada, silahkan gunakan e-mail yang berbeda!");
         echo '</div></div>';
@@ -35,15 +36,9 @@ if (isset($_POST['submit'])){
         echo $_SESSION['message'];
         echo '</div></div>';
         unset($_SESSION['message']);
-        $sql = "INSERT INTO users (name, email, password, nomor_telepon) 
-        VALUES (:name, :email, :password, :nomor_telepon)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-          ':name' => $_POST['name'],
-          ':email' => $_POST['email'],
-          ':password' => password_hash($_POST['password'],PASSWORD_DEFAULT),
-          ':nomor_telepon' => $_POST['nomorTelepon']));
-        $_SESSION['message'] = 'Data sudah masuk, silahkan kembali <a href="/login.php">Login</a> ';
+        
+        //Masukkan data ke database
+        $pdo->tambah_data($_POST['name'], $_POST['email'], $_POST['password'], $_POST['nomorTelepon']);
     }
 } 
 ?>

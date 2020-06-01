@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once "database.php";
+//Memanggil dari kelas database
+$pdo = new database();
 
 //Jika user sudah pernah login maka akan diarahkan ke halaman profile
 if(!isset($_SESSION['email']) == 0 ){
@@ -13,19 +15,15 @@ if(isset($_POST['submit'])){
     $password = $_POST['password'];
 
     //Mengecek apakah loginnya cocok dengan database
-    $sql = "SELECT * FROM users WHERE email = :email";
-    $stmt = $pdo -> prepare($sql);
-    $stmt -> bindParam(':email', $email);
-    $stmt -> execute();
-    $row = $stmt -> fetch(PDO::FETCH_ASSOC);
+    $login = $pdo -> login($email);
 
     //Mengecek apakah password cocok
-    if (password_verify($password, $row['password'])){
+    if (password_verify($password, $login['password'])){
         //Memasukkan data ke session
-        $id = $row['id'];
-        $_SESSION['name'] = $row['name'];
+        $id = $login['id'];
+        $_SESSION['name'] = $login['name'];
         $_SESSION['email'] = $email;
-        $_SESSION['nomortelepon'] = $row['nomor_telepon'];
+        $_SESSION['nomortelepon'] = $login['nomor_telepon'];
         setcookie('user_id', $id, time()+(7 * 24 * 60 * 60), '/');
         header("Location: dashboard.php");
     }
