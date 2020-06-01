@@ -14,26 +14,32 @@ $(function(){
             current : ''
         },
         onStepChanging: function (event, currentIndex, newIndex) { 
-            var fullname = $('#first_name').val() + ' ' + $('#last_name').val();
-            var email = $('#email').val();
-            var phone = $('#phone').val();
-            var username = $('#username').val();
-            var gender = $('form input[type=radio]:checked').val();
-            var address = $('#address').val();
+            var jenisLaundry = $('form input[type=radio]:checked').val();
+            var jumlahBarang = $('#jumlahBarang').val();
+            var waktuPengambilan = $('#tanggalPengambilan').val();
+            var waktuPengantaran = $('#tanggalPengantaran').val();
+            var alamat = $('#alamat').val();
+            var catatan = $('#catatan').val();
+            var harga =  $('#harga').val();
 
-            $('#fullname-val').text(fullname);
-            $('#email-val').text(email);
-            $('#phone-val').text(phone);
-            $('#username-val').text(username);
-            $('#address-val').text(address);
-            $('#gender-val').text(gender);
+            $('#jenis_laundry-val').text(jenisLaundry);
+            $('#jumlah_barang-val').text(jumlahBarang);
+            $('#waktu_pengambilan-val').text(waktuPengambilan);
+            $('#waktu_pengantaran-val').text(waktuPengantaran);
+            $('#alamat-val').text(alamat);
+            $('#catatan-val').text(catatan);
+            $('#harga-val').text(harga);
 
             return true;
         }
     });
     $("#date").datepicker({
+        
         dateFormat: "MM - DD - yy",
         showOn: "both",
         buttonText : '<i class="zmdi zmdi-chevron-down"></i>',
     });
+    // Date Picker
+    var dp1 = $('#dp1').datepicker().data('datepicker');
+    dp1.selectDate(new Date());
 });

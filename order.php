@@ -7,22 +7,18 @@ require_once "database.php";
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Wizard-v3</title>
-	<!-- Mobile Specific Metas -->
+	<title>Pemesanan Laundry</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<!-- Font-->
+	<link rel="stylesheet" href="css/order.css"/>
 	<link rel="stylesheet" type="text/css" href="css/roboto-font.css">
 	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-	<!-- datepicker -->
-	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
-	<!-- Main Style Css -->
-    <link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/datepicker.min.css">
 </head>
 <body>
 	<div class="page-content" style="background-image: url('pictures/login.jpg')">
-		<div class="wizard-v3-content">
-			<div class="wizard-form">
-				<div class="wizard-header">
+		<div class="pemesanan">
+			<div class="order-form">
+				<div class="order-header">
 					<h3 class="heading">Laundry onLine</h3>
 					<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
 				</div>
@@ -40,38 +36,37 @@ require_once "database.php";
                                     <label>Pilih Jenis Laundry :</label>
                                     <input type="radio" name="jenis_laundry" value="kiloan" checked class="radio-1"> Kiloan
                                       <input type="radio" name="jenis_launry" value="satuan"> Satuan
-                                </div>
-			                	<div class="form-row">
-									<div class="form-holder form-holder-2">
+								</div>
+								<div class="service-desc-box">
+                            		<span class="service-desc-box-text">
+                                        <strong> Deskripsi Jasa:</strong> <br> <ol><li>Perhitungan biaya berdasarkan timbangan yang di laundry</li><li>Minimum order 5 kg</li></ol>
+                                    </span>
+                        		</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-1">
 										<label class="form-row-inner">
-                                            <div class="title">Pilih Waktu Pengambilan</div>
-                                            <div class="form-group mb-4 p-1">
-                                                <label for="dateInput">Tanggal Pengambilan</label>
-                                                <datepicker :disabled="datepicker.disabled" v-model="jobDatePicker" format="yyyy-MM-dd"
-                                                name="projectData[dateInput]" input-class="form-control input_text" id="dateInput"
-                                                placeholder="Click here to select a date" required></datepicker>
-                                                <input type="text" class="input_text form-control" v-bind:value="deliveryDate"
-                                                id="dateInputOther" name="projectData[dateInputOther]"
-                                                placeholder="Tanggal Pengantaran" readonly>
-                                                <span v-show="errors.has('step1.projectData[hourInputOther]')" class="help is-danger">Kolom harus diisi</span>
-                                            </div>
-										</label>
-									</div>
-                                </div>
-                                <div class="form-row">
-									<div class="form-holder form-holder-2">
-										<label class="form-row-inner">
-                                            <div class="title">Pilih Waktu Pengantaran</div>
-                                            <div class="form-group mb-4 p-1">
-                                                <label for="dateInputOther">Tanggal Pengantaran</label>
-                                                <input type="text" class="input_text form-control" v-bind:value="deliveryDate"
-                                                    id="dateInputOther" name="projectData[dateInputOther]"
-                                                    placeholder="Tanggal Pengantaran" readonly>
-                                                    <span v-show="errors.has('step1.projectData[hourInputOther]')" class="help is-danger">Kolom harus diisi</span>
-                                            </div>
+											<input type="text" class="form-control" id="jumlahBarang" name="jumlahBarang" required>
+											<span class="label">Jumlah Barang</span>
+					  						<span class="border"></span>
 										</label>
 									</div>
 								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="form-row-inner" for="tanggalAmbil">Pilih Tanggal Pengambilan</label>
+										<div class="form-holder">
+											<input type="text" class="form-control datepicker-here" data-language='en' data-date-format="dd - mm- yyyy" id="tanggalPengambilan">
+										</div>
+									</div>
+	                    		</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="form-row-inner" for="tanggalAntar">Pilih Tanggal Pengantaran</label>
+										<div class="form-holder">
+											<input type="text" class="form-control datepicker-here" data-language='en' data-date-format="dd - mm - yyyy" id="tanggalPengantaran">
+										</div>
+									</div>
+	                    		</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
@@ -125,7 +120,7 @@ require_once "database.php";
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
 											<input type="text" class="form-control" id="holder" name="holder" required>
-											<span class="label">Holder Name*</span>
+											<span class="label">Nama Pemegang</span>
 					  						<span class="border"></span>
 										</label>
 									</div>
@@ -134,35 +129,43 @@ require_once "database.php";
 									<div class="form-holder">
 										<label class="form-row-inner">
 											<input type="text" class="form-control" id="card" name="card" required>
-											<span class="label">Card Number*</span>
+											<span class="label">Nomor Kartu</span>
 											<span class="border"></span>
 										</label>
 									</div>
 									<div class="form-holder">
 										<label class="form-row-inner">
 											<input type="text" class="form-control" id="cvc" name="cvc" required>
-											<span class="label">CVC*</span>
+											<span class="label">CVC</span>
 											<span class="border"></span>
 										</label>
 									</div>
 								</div>
 			                	<div class="form-row form-row-date form-row-date-1">
 									<div class="form-holder form-holder-2">
-										<label for="date" class="special-label">Expiry Date*:</label>
+										<label for="date" class="special-label">Tanggal Kadaluarsa:</label>
 										<select name="month_1" id="month_1">
-											<option value="Month" disabled selected>Month</option>
-											<option value="Feb">Feb</option>
-											<option value="Mar">Mar</option>
-											<option value="Apr">Apr</option>
-											<option value="May">May</option>
+											<option value="Month" disabled selected>Bulan</option>
+											<option value="Feb">Jan</option>
+											<option value="Mar">Feb</option>
+											<option value="Apr">Mar</option>
+											<option value="May">Apr</option>
+											<option value="Feb">Mei</option>
+											<option value="Mar">Jun</option>
+											<option value="Apr">Jun</option>
+											<option value="May">Agt</option>
+											<option value="May">Sep</option>
+											<option value="May">Okt</option>
+											<option value="May">Nov</option>
+											<option value="May">Des</option>
 										</select>
 										<select name="year_1" id="year_1">
-											<option value="Year" disabled selected>Year</option>
-											<option value="2017">2017</option>
-											<option value="2016">2016</option>
-											<option value="2015">2015</option>
-											<option value="2014">2014</option>
-											<option value="2013">2013</option>
+											<option value="Year" disabled selected>Tahun</option>
+											<option value="2017">2024</option>
+											<option value="2016">2023</option>
+											<option value="2015">2022</option>
+											<option value="2014">2021</option>
+											<option value="2013">2020</option>
 										</select>
 									</div>
 								</div>
@@ -221,5 +224,7 @@ require_once "database.php";
 	<script src="js/jquery.steps.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/datepicker.js"></script>
+	<script src="js/datepicker.en.js"></script>
 </body>
 </html>
