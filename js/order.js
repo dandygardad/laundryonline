@@ -27,7 +27,12 @@ $(function(){
             var waktuPengantaran = $('#tanggalPengantaran').val();
             var alamat = $('#alamat').val();
             var catatan = $('#catatan').val();
-            var harga =  $('#harga').val();
+
+            if(jumlahBarang > 5 ){
+                var harga = 50000
+            }
+
+            $('#harga').text(harga);
 
             $('#jenis_laundry-val').text(jenisLaundry);
             $('#jumlah_barang-val').text(jumlahBarang);

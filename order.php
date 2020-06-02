@@ -4,7 +4,7 @@ require_once "database.php";
 
 $pdo = new database();
 
-if (isset($_POST['submit'])){
+if (isset($_POST['Submit'])){
 
     //Mencegah data pesanan kosong
     if(empty($_POST['jenis_laundry']) || empty($_POST['jumlahBarang']) || empty($_POST['tanggalPengambilan']) || empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan'])) {
@@ -24,9 +24,9 @@ if (isset($_POST['submit'])){
         //Masukkan data pesanan ke database
         $pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], $_POST['catatan']);
     }
-} 
-
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +36,31 @@ if (isset($_POST['submit'])){
 	<link rel="stylesheet" href="css/order.css"/>
 	<link rel="stylesheet" type="text/css" href="css/roboto-font.css">
 	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+	<!-- Menyisipkan library Google Maps -->
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+    <script>
+        // fungsi initialize untuk mempersiapkan peta
+        function initialize() {
+			var propertiPeta = {
+				center:new google.maps.LatLng(-5.230242,119.502506),
+				zoom:15,
+				mapTypeId:google.maps.MapTypeId.ROADMAP
+			};
+			
+			var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
+			
+			// membuat Marker
+			var marker=new google.maps.Marker({
+				position: new google.maps.LatLng(-5.230242,119.502506),
+				map: peta,
+				animation: google.maps.Animation.BOUNCE
+			});
+		}
+        // event jendela di-load  
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </head>
 <body>
 	<div class="page-content" style="background-image: url('pictures/login.jpg')">
@@ -45,7 +70,7 @@ if (isset($_POST['submit'])){
 					<h3 class="heading">Laundry onLine</h3>
 					<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
 				</div>
-		        <form class="form-register" action="#" method="post">
+		        <form class="form-order" action="#" method="POST">
 		        	<div id="form-total">
 		        		<!-- Pilihan 1 -->
 			            <h2>
@@ -99,8 +124,14 @@ if (isset($_POST['submit'])){
 										</label>
 									</div>
 								</div>
-                                <div class="price">
-                                        Harga Total
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<label class="form-row-inner"> Harga Total
+											<input type="text" class="form-control" id="harga" name="harga" required>
+											<span class="border"></span>
+										</label>
+											<button type="button" class="btn btn-primary btn-sm" onclick="harga()">Hitung</button>
+									</div>
                                 </div>
 							</div>
 			            </section>
@@ -121,6 +152,7 @@ if (isset($_POST['submit'])){
 										</label>
 									</div>
 								</div>
+								<div id="googleMaps" style="width:100%;height:380px;"></div>
 							</div>
 			            </section>
 			            <!-- Pilihan 3 -->
@@ -248,4 +280,11 @@ if (isset($_POST['submit'])){
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/order.js"></script>
 </body>
+<script type="application/javascript">
+	function harga(){
+	var x = $('#jumlahBarang').val();
+	if (x > 5){
+	$('#harga').text(x);;
+	}
+</script>
 </html>

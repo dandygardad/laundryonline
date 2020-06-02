@@ -92,6 +92,11 @@ class database{
           ':catatan' => $catatan));
         return $stmt;
     }
-}
 
+    public function tampilkan_pesanan(){
+        $sql = "SELECT * FROM order";
+        $stmt = $this -> pdo ->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
 ?>
