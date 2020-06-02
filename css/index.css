@@ -1,0 +1,45 @@
+.onclick {
+    list-style-type: none;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    background-color: #1f8ceb;
+    font-family: Myfont, sans-serif !important;
+}
+
+img {
+    height: 20m;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #1f8ceb;
+    ;
+}
+
+body {
+    font-family: 'Source Sans Pro';
+    margin: 0;
+    color: white;
+}
+
+span {
+    /* display:block; */
+    font-size: 1.4em;
+    color: blue;
+}
+
+.tengah {
+    text-align: center;
+}
