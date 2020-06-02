@@ -1,0 +1,62 @@
+body {
+    background: url('/pictures/login.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+  
+  .onclick {
+    list-style-type: none;
+    margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    background-color: #1f8ceb;
+    font-family: Myfont, sans-serif !important;
+
+  }
+
+  li {
+    float: right;
+  }
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #1f8ceb;;
+  }
+
+  body {
+    font-family: 'Source Sans Pro';
+    margin:0;
+    color:white;
+}
+
+.container2 {
+  color: #1f8ceb;
+  padding: 2em 2em;
+  background : white;
+}
+.container3 {
+    padding: 2em 2em;
+    background:#1f8ceb;
+}
+.container4 {
+    padding: 2em 30em;
+    background:white;
+    color: blue;
+}
+span {
+    /* display:block; */
+    font-size:1.4em;
+
+    color: blue;
+}
+
+
+  
