@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Laundry</title>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
     <div >
@@ -44,9 +45,9 @@
             <h3> Why use online laundry ?</h3>
             <p>Free pick up and delivery, track your order, fast services, best quality with competitve price and service guarantee.</p>
     </div>
+    <div id="googleMaps" style="width:100%;height:380px;"></div>
 
     <div class="container4">
-        
                  <H4>address</H4>
                 Jl. abc No. 40B, Sulawesi Selatan 12560 
 
@@ -54,22 +55,37 @@
                 (021) 227 1XX XX
           
                  <h4>Follow US</h4>
-                
-         
-
             <li> <!-- Ulangi lagi tiga kali sehingga sekarang kita punya 6 list -->
             <li> <!-- Ulangi lagi tiga kali sehingga sekarang kita punya 6 list -->
             <li> <!-- Ulangi lagi tiga kali sehingga sekarang kita punya 6 list -->
         </ul>
     </div>
+    <script>
+        // fungsi initialize untuk mempersiapkan peta
+        function initialize() {
+            var propertiPeta = {
+                center:new google.maps.LatLng(-5.2304254160715065, 119.50257641283645),
+                zoom:15,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+            
+            var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
 
-    
-
-
-
-  
- 
-
+            // even listener ketika peta diklik
+            google.maps.event.addListener(peta, 'click', function(event) {
+                taruhMarker(this, event.latLng);
+            });
+            
+            // membuat Marker untuk halaman konfirmasi
+            var marker=new google.maps.Marker({
+                position: new google.maps.LatLng(-5.2304254160715065, 119.50257641283645),
+                map: peta,
+                animation: google.maps.Animation.BOUNCE
+            });
+        }
+        // event jendela di-load  
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </body>
 </html>
 

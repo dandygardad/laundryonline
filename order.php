@@ -36,54 +36,6 @@ if (isset($_POST['Submit'])){
 		<link rel="stylesheet" href="css/order.css"/>
 		<link rel="stylesheet" type="text/css" href="css/roboto-font.css">
 		<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-
-		<!-- Menyisipkan library Google Maps -->
-		<script src="http://maps.googleapis.com/maps/api/js"></script>
-
-		<script>
-
-			var marker;
-			function taruhMarker(peta, posisiTitik){
-				if(marker){
-					// pindahkan marker
-					marker.setPosition(posisiTitik);
-				} else {
-					// buat marker baru
-					marker = new google.maps.Marker({
-						position: posisiTitik,
-						map: peta
-					});
-				}
-				// isi nilai koordinat ke form
-				document.getElementById("lat").value = posisiTitik.lat();
-				document.getElementById("lng").value = posisiTitik.lng();
-			}
-
-			// fungsi initialize untuk mempersiapkan peta
-			function initialize() {
-				var propertiPeta = {
-					center:new google.maps.LatLng(-5.147842,119.432448),
-					zoom:13,
-					mapTypeId:google.maps.MapTypeId.ROADMAP
-				};
-				
-				var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
-
-				// even listener ketika peta diklik
-				google.maps.event.addListener(peta, 'click', function(event) {
-					taruhMarker(this, event.latLng);
-				});
-				
-				// // membuat Marker
-				// var marker=new google.maps.Marker({
-				// 	position: new google.maps.LatLng(-5.230242,119.502506),
-				// 	map: peta,
-				// 	animation: google.maps.Animation.BOUNCE
-				// });
-			}
-			// event jendela di-load  
-			google.maps.event.addDomListener(window, 'load', initialize);
-		</script>
 	</head>
 	<body>
 		<div class="page-content" style="background-image: url('pictures/login.jpg')">
@@ -262,11 +214,15 @@ if (isset($_POST['Submit'])){
 													<td id="jumlah_barang-val"></td>
 												</tr>
 												<tr class="space-row">
-													<th>Waktu Pengambilan :</th>
+													<th>Catatan Tambahan :</th>
+													<td id="catatan-val"></td>
+												</tr>
+												<tr class="space-row">
+													<th>Waktu Pengambilan:</th>
 													<td id="waktu_pengambilan-val"></td>
 												</tr>
 												<tr class="space-row">
-													<th>Waktu Pengantaran :</th>
+													<th>Waktu Pengantaran:</th>
 													<td id="waktu_pengantaran-val"></td>
 												</tr>
 												<tr class="space-row">
@@ -280,10 +236,6 @@ if (isset($_POST['Submit'])){
 												<tr class="space-row">
 													<th>Garis Bujur :</th>
 													<td id="lng-val"></td>
-												</tr>
-												<tr class="space-row">
-													<th>Catatan Tambahan :</th>
-													<td id="catatan-val"></td>
 												</tr>
 												<tr class="space-row">
 													<th>Harga Total :</th>
@@ -303,5 +255,6 @@ if (isset($_POST['Submit'])){
 		<script src="js/jquery.steps.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
 		<script src="js/order.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js"></script>
 	</body>
 </html>
