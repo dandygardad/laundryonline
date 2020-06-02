@@ -25,20 +25,28 @@ $(function(){
             var jumlahBarang = $('#jumlahBarang').val();
             var waktuPengambilan = $('#tanggalPengambilan').val();
             var waktuPengantaran = $('#tanggalPengantaran').val();
-            var alamat = $('#alamat').val();
             var catatan = $('#catatan').val();
+            var alamat = $('#alamat').val();
+            var lat = $('#lat').val();
+            var lng = $('#lng').val();
+            var harga;
+            
 
             if(jumlahBarang > 5 ){
-                var harga = 50000
+                harga = 50000
+            } else {
+                harga = 0
             }
 
-            $('#harga').text(harga);
+            // Memasukkan Nilai pada Section Konfirmasi
 
             $('#jenis_laundry-val').text(jenisLaundry);
             $('#jumlah_barang-val').text(jumlahBarang);
             $('#waktu_pengambilan-val').text(waktuPengambilan);
             $('#waktu_pengantaran-val').text(waktuPengantaran);
             $('#alamat-val').text(alamat);
+            $('#lat-val').text(lat);
+            $('#lng-val').text(lng);
             $('#catatan-val').text(catatan);
             $('#harga-val').text(harga);
 
