@@ -98,5 +98,11 @@ class database{
         $stmt = $this -> pdo ->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getHarga(){
+        $sql = "SELECT * FROM harga";
+        $stmt = $this -> pdo ->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>
