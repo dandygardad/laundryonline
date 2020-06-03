@@ -1,13 +1,20 @@
 <?php
 session_start();
 require_once "database.php";
-
+// membuat objek
 $pdo = new database();
 
-if (isset($_POST['Submit'])){
+// // Mengalihkan pengguna jika belum melakukan login
+// if(!isset($_SESSION['name']) || ($_SESSION['email']) || ($_SESSION['nomortelepon'])){
+// 	$_SESSION['msg'] = 'Anda Harus Melakukan Login Terlebih Dahulu Untuk Dapat Melakukan Pemesanan';
+// 	header('Location: login.php');
+// }
+
+if (isset($_POST['form-total'])){
 
     //Mencegah data pesanan kosong
-    if(empty($_POST['jenis_laundry']) || empty($_POST['jumlahBarang']) || empty($_POST['tanggalPengambilan']) || empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan'])) {
+	if(empty($_POST['jenis_laundry-val']) || empty($_POST['jumlahBarang']) || empty($_POST['tanggalPengambilan']) || 
+	empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan']) || empty($_POST['lat']) || empty($_POST['lng'])) {
         echo '<div class="box"><div class="square">';
         echo("Field tidak boleh kosong!");
         echo '</div></div>';
@@ -22,7 +29,7 @@ if (isset($_POST['Submit'])){
         unset($_SESSION['message']);
         
         //Masukkan data pesanan ke database
-        $pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], $_POST['catatan']);
+        $pdo->tambah_pesanan($_POST['jenis_laundry-val'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], $_POST['catatan'], $_POST['lat'], $_POST['lng']);
     }
 }
 ?>
@@ -45,7 +52,7 @@ if (isset($_POST['Submit'])){
 						<h3 class="heading">Laundry onLine</h3>
 						<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
 					</div>
-					<form class="form-order" action="#" method="POST">
+					<form class="form-order" action="#" method="POST" role="form-order">
 						<div id="form-total">
 							<!-- Pilihan 1 -->
 							<h2>
@@ -55,10 +62,14 @@ if (isset($_POST['Submit'])){
 							<section>
 								<div class="inner">
 									<h3>Silahkan Isi Form Pemesanan Anda</h3>
-									<div id="radio">
+									<div class="form-group" id="radio">
 										<label>Pilih Jenis Laundry :</label>
-										<input type="radio" name="jenis_laundry" value="kiloan"> Kiloan
-										<input type="radio" name="jenis_launry" value="satuan"> Satuan
+										<label class="radio-inline">
+											<input type="radio" name="jenis_laundry" value="kiloan"> Kiloan
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="jenis_launry" value="satuan"> Satuan
+										</label>
 									</div>
 									<div class="service-desc-box">
 										<span class="service-desc-box-text">
@@ -207,7 +218,7 @@ if (isset($_POST['Submit'])){
 											<tbody>
 												<tr class="space-row">
 													<th>Jenis Laundry :</th>
-													<td id="jenis_laundry-val"></td>
+													<td id="jenis_laundry-val" name="jenis_laundry-val"></td>
 												</tr>
 												<tr class="space-row">
 													<th>Jumlah Barang :</th>
@@ -244,6 +255,9 @@ if (isset($_POST['Submit'])){
 											</tbody>
 										</table>
 									</div>
+									<!-- <div class="form-group">
+										<input type="button" name="submit" id="submit" class="btn btn-success" value="Submit"/>
+									</div> -->
 								</div>
 							</section>
 						</div>
@@ -255,6 +269,6 @@ if (isset($_POST['Submit'])){
 		<script src="js/jquery.steps.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
 		<script src="js/order.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
 	</body>
 </html>

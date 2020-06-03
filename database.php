@@ -79,9 +79,9 @@ class database{
         return $stmt;
     }
 
-    public function tambah_pesanan($jenis_laundry, $jumlah_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan){
-        $sql = "INSERT INTO order (jenis_laundry, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan) 
-        VALUES (:jenis_laundry, :jumlah_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan)";
+    public function tambah_pesanan($jenis_laundry, $jumlah_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur){
+        $sql = "INSERT INTO order (jenis_laundry, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur) 
+        VALUES (:jenis_laundry, :jumlah_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur)";
         $stmt = $this-> pdo-> prepare($sql);
         $stmt->execute(array(
           ':jenis_laundry' => $jenis_laundry,
@@ -89,7 +89,9 @@ class database{
           ':waktu_pengambilan' => $waktu_pengambilan,
           ':waktu_pengantaran' => $waktu_pengantaran,
           ':alamat' => $alamat,
-          ':catatan' => $catatan));
+          ':catatan' => $catatan,
+          ':garis_lintang' => $garis_lintang,
+          ':garis_bujur' => $garis_bujur));
         return $stmt;
     }
 

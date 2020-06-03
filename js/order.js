@@ -10,14 +10,17 @@ $(function(){
         labels: {
             previous : 'Previous',
             next : 'Next Step',
-            finish :'Submit',
+            finish :'submit',
             current : ''
         },
 
         onFinished: function (event, currentIndex) {
-            $("#form").submit();
-            alert("Pesanan Berhasil Ditambahkan!");
-            location.href="index.html"
+            // var form = $(this)
+            // submit form input
+            $("#form-total").submit();
+            // form.submit();
+            // alert("Pesanan Berhasil Ditambahkan!");
+            // location.href="index.html"
         },
 
         onStepChanging: function (event, currentIndex, newIndex) { 
@@ -31,12 +34,12 @@ $(function(){
             var lng = $('#lng').val();
             var harga;
 
-            for(jumlahBarang=1; jumlahBarang>=50; ){
-                
-            }
+            // for(jumlahBarang=1; jumlahBarang>=50; ){
+
+            // }
             
 
-            if(jumlahBarang > 5 ){
+            if(jumlahBarang >= 5 ){
                 harga = 50000
             } else {
                 harga = 0
@@ -84,13 +87,11 @@ $(function(){
 
     // fungsi initialize untuk mempersiapkan peta
     function initialize() {
-        var propertiPeta = {
+        var peta = new google.maps.Map(document.getElementById("googleMaps"), {
             center:new google.maps.LatLng(-5.147842,119.432448),
             zoom:13,
             mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-        
-        var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
+        });
 
         // even listener ketika peta diklik
         google.maps.event.addListener(peta, 'click', function(event) {
