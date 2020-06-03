@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once "database.php";
+//Memanggil kelas database
+$pdo = new database();
+
     //Jika user sudah login, maka akan langsung terpindah ke dashboard user/admin
     if(isset($_SESSION['email']) == 0){
     
@@ -8,6 +11,10 @@ require_once "database.php";
     else{
         header("Location: dashboard.php");    
     }
+
+    //Memunculkan daftar harga
+    $rows = $pdo -> getHarga();
+
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +23,11 @@ require_once "database.php";
     <meta charset="UTF-8">
     <script src="js/jquery-3.5.1.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAUNDRY ONLINE</title>
@@ -101,6 +111,28 @@ require_once "database.php";
             <h1 class="display-4">Daftar Harga</h1>
             <p class="lead">Berikut ini merupakan daftar harga yang tersedia, murah!</p>
             <hr class="my-4">
+            <table id="pagination" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Nama Barang</th>
+                        <th scope="col">Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ( $rows as $row ) {
+                    ?>
+                    <tr>
+                        <th><?=$row['id'] ?></th>
+                        <td><?=$row['nama_barang'] ?></td>
+                        <td><?=$row['harga']?></td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
             </div>
         </div>
     </div>
@@ -217,4 +249,9 @@ require_once "database.php";
         }
         // event jendela di-load  
         google.maps.event.addDomListener(window, 'load', initialize);
+
+        //Menggunakan DataTables
+        $(document).ready(function() {
+            $('#pagination').DataTable();
+        } );
     </script>
