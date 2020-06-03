@@ -1,5 +1,5 @@
 $(function(){
-    $("#form-total").steps({
+    $(".form-order").steps({
         headerTag: "h2",
         bodyTag: "section",
         transitionEffect: "fade",
@@ -10,15 +10,15 @@ $(function(){
         labels: {
             previous : 'Previous',
             next : 'Next Step',
-            finish :'submit',
+            finish :'Submit',
             current : ''
         },
 
         onFinished: function (event, currentIndex) {
-            // var form = $(this)
+            var form = $(this);
             // submit form input
-            $("#form-total").submit();
-            // form.submit();
+            // $("#form-total").submit();
+                form.submit();
             // alert("Pesanan Berhasil Ditambahkan!");
             // location.href="index.html"
         },

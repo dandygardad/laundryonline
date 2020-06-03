@@ -16,8 +16,8 @@ CREATE TABLE `order` (
   `waktu_pengantaran` DATE DEFAULT NULL,
   `alamat` VARCHAR (80) DEFAULT NULL,
   `catatan` VARCHAR (128) DEFAULT NULL,
-  `garis_lintang` FLOAT(10, 6) DEFAULT NULL,
-  `garis_bujur` FLOAT(10, 6) DEFAULT NULL
+  `garis_lintang` FLOAT(10, 8) DEFAULT NULL,
+  `garis_bujur` FLOAT(11, 8) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `harga` (

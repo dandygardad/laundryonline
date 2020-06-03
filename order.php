@@ -10,10 +10,10 @@ $pdo = new database();
 // 	header('Location: login.php');
 // }
 
-if (isset($_POST['form-total'])){
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //Mencegah data pesanan kosong
-	if(empty($_POST['jenis_laundry-val']) || empty($_POST['jumlahBarang']) || empty($_POST['tanggalPengambilan']) || 
+	if(empty($_POST['jenis_laundry']) || empty($_POST['jumlahBarang']) || empty($_POST['tanggalPengambilan']) || 
 	empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan']) || empty($_POST['lat']) || empty($_POST['lng'])) {
         echo '<div class="box"><div class="square">';
         echo("Field tidak boleh kosong!");
@@ -22,14 +22,14 @@ if (isset($_POST['form-total'])){
 
     //Memasukkan Data Pesanan
     else{
-        $_SESSION['message'] = 'Pesanan telah ditambahkan, Silahkan kembali <a href="/index.html">Home</a> ';
+        $_SESSION['message'] = 'Pesanan telah ditambahkan, Silahkan kembali <a href="/index.php">Home</a> ';
         echo '<div class="box"><div class="square">';
         echo $_SESSION['message'];
         echo '</div></div>';
         unset($_SESSION['message']);
         
         //Masukkan data pesanan ke database
-        $pdo->tambah_pesanan($_POST['jenis_laundry-val'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], $_POST['catatan'], $_POST['lat'], $_POST['lng']);
+        $pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], $_POST['catatan'], $_POST['lat'], $_POST['lng']);
     }
 }
 ?>
@@ -52,8 +52,8 @@ if (isset($_POST['form-total'])){
 						<h3 class="heading">Laundry onLine</h3>
 						<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
 					</div>
-					<form class="form-order" action="#" method="POST" role="form-order">
-						<div id="form-total">
+					<form class="form-order" action="#" method="POST" name="this" id="this" role="form">
+						<!-- <div id="form-total"> -->
 							<!-- Pilihan 1 -->
 							<h2>
 								<span class="step-icon"><i class="zmdi zmdi-shopping-cart"></i></span>
@@ -64,12 +64,8 @@ if (isset($_POST['form-total'])){
 									<h3>Silahkan Isi Form Pemesanan Anda</h3>
 									<div class="form-group" id="radio">
 										<label>Pilih Jenis Laundry :</label>
-										<label class="radio-inline">
-											<input type="radio" name="jenis_laundry" value="kiloan"> Kiloan
-										</label>
-										<label class="radio-inline">
-											<input type="radio" name="jenis_launry" value="satuan"> Satuan
-										</label>
+										<input type="radio" name="jenis_laundry" value="kiloan" checked> Kiloan
+										<input type="radio" name="jenis_laundry" value="satuan"> Satuan
 									</div>
 									<div class="service-desc-box">
 										<span class="service-desc-box-text">
@@ -260,7 +256,7 @@ if (isset($_POST['form-total'])){
 									</div> -->
 								</div>
 							</section>
-						</div>
+						<!-- </div> -->
 					</form>
 				</div>
 			</div>
