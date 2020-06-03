@@ -81,8 +81,11 @@ $(function(){
             });
         }
         // isi nilai koordinat ke form
-        document.getElementById("lat").value = posisiTitik.lat();
-        document.getElementById("lng").value = posisiTitik.lng();
+        var lat = posisiTitik.lat();
+        var lng = posisiTitik.lng()
+
+        document.getElementById("lat").value = lat.toFixed(6);
+        document.getElementById("lng").value = lng.toFixed(6);
     }
 
     // fungsi initialize untuk mempersiapkan peta
@@ -98,12 +101,6 @@ $(function(){
             taruhMarker(this, event.latLng);
         });
         
-        // // membuat Marker untuk halaman konfirmasi
-        // var marker=new google.maps.Marker({
-        // 	position: new google.maps.LatLng(posisi),
-        // 	map: peta,
-        // 	animation: google.maps.Animation.BOUNCE
-        // });
     }
     // event jendela di-load  
     google.maps.event.addDomListener(window, 'load', initialize);

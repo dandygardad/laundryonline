@@ -53,8 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 						<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
 					</div>
 					<form class="form-order" action="#" method="POST" name="this" id="this" role="form">
-						<!-- <div id="form-total"> -->
-							<!-- Pilihan 1 -->
 							<h2>
 								<span class="step-icon"><i class="zmdi zmdi-shopping-cart"></i></span>
 								<span class="step-text">Pemesanan</span>
@@ -251,12 +249,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 											</tbody>
 										</table>
 									</div>
-									<!-- <div class="form-group">
-										<input type="button" name="submit" id="submit" class="btn btn-success" value="Submit"/>
-									</div> -->
 								</div>
 							</section>
-						<!-- </div> -->
 					</form>
 				</div>
 			</div>
