@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
@@ -21,6 +22,8 @@ CREATE TABLE `Order` (
   `harga_total` INT(10) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+=======
+>>>>>>> fda342f933c10a339d4dccbf203e2fd0b9759019
 CREATE TABLE `harga` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_barang` varchar(30) DEFAULT NULL,

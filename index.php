@@ -58,9 +58,12 @@ $pdo = new database();
                 <img class="d-block w-100" src="pictures/login2.jpg" alt="First slide">
             </div>
             <div class="carousel-caption">
-                <img src="pictures/img1.png" width="500px" alt=""> 
-                <h1 class="display-4 bg-dark"><b>WELCOME TO LAUNDRY ONLINE</b></h1>
-                <br><br><br><br><br><br><br><br><br><br>
+                <h6><img src="pictures/img1.png" width="350px" alt=""> </h6>
+                 <h1><b>Selamat datang di Laundry Online</b></h1>
+                <h1><b>Solusi cuci setiap hari</b></h1>
+                <br>
+                <h6><a class="btn btn-primary btn-lg" href="/signup.php" role="button">Daftar Sekarang</a></h6>
+                <br><br><br><br>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src="pictures/login.jpg" alt="Second slide">
@@ -139,34 +142,26 @@ $pdo = new database();
     <hr id="faq">
     <div class="jumbotron jumbotron-fluid bg-white">
         <div class="container">
-            <div class="tengah">
-            <h1 class="display-4">FAQ</h1>
-            <p class="lead">Pertanyaan yang sering muncul.</p>
+          
+            <h1 class="display-4">Frequently Asked Questions</h1>
+            <p class="lead">Yang sering ditanyakan pelanggan</p>
             <hr class="my-4">
-            <h3>What is online laundry?</h3>
-            <p> online laundry help you with your laundry. powered by web application, 
-                we partnered with professional laundry and offer pick up and delivery service right to your house, office or other places.</p>
+            <h3>Bagaimana saya dapat menggunakan layanan Laundry Online?</h3>
+            <p> dapat digunakan melalui website resmi Laundry Online yang dapat akses di www.LaundryOnlineLOL.com</p>
                 <br>
-            <h3> How to order online laundry?</h3>
-            <p>You can order via our website application.</p>
+            <h3> Bagaimana Cara Order Laundry Online?</h3>
+            <p>Melalui website Laundry Online, Kamu dapat membuat order dengan memilih lokasi Kamu untuk
+             penjemputan dan pengembalian. Setelah itu, kamu pilih layanan yang kamu inginkan, buat order, dan menyelesaikan transaksi pembayaran. kemudian laundry akan di antarkan di alamatmu</p>
                 <br>
-            <h3> Why use online laundry ?</h3>
-            <p>Free pick up and delivery, track your order, fast services, best quality with competitve price and service guarantee.</p>
+            <h3> Apa saja layanan yang disediakan oleh Laundry Online ?</h3>
+            <p>Jenis layanannya dua jenis Laundry, yaitu cuci kiloan dan satuan.</p>
+         
             </div>
         </div>
     </div>
     </div>
 
     <hr>
-    <div class="jumbotron">
-        <div class="tengah">
-        <h1 class="display-4"><b>Tunggu Apalagi?</b></h1><br>
-        <p class="lead">Ayo pesan sekarang, kami akan jemput langsung laundry anda!</p>
-        <hr class="my-4">
-        <p>Klik link dibawah ini untuk mendaftar!</p>
-        <a class="btn btn-primary btn-lg" href="/signup.php" role="button">Daftar Sekarang</a>
-        </div>
-    </div>
     <hr id="hubungi-kami">
     <div class="jumbotron jumbotron-fluid bg-dark text-white">
         <div class="container">

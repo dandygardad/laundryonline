@@ -8,7 +8,8 @@
 }
 
 img {
-    height: 20m;
+    height: 10m;
+    text-align: left;
 }
 
 li {
@@ -42,4 +43,18 @@ span {
 
 .tengah {
     text-align: center;
+}
+
+.container {
+    text-align: left;
+
+}
+
+h1 {
+    text-align: left;
+    padding-left: 0px;
+}
+
+h6{
+    text-align: left;
 }
