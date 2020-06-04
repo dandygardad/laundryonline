@@ -120,8 +120,8 @@ $banyakdata = $pdo -> banyak_data();
             </div>
             <br>
             <div class="row">
-                <div class="col-6"><div class="tengah"><img src="pictures/pesanan.png" width="100px"></div></div>
-                <div class="col-6"><div class="tengah"><img src="pictures/users.png" width="100px"></div></div>
+                <div class="col-6"><div class="tengah"><img src="images/pesanan.png" width="100px"></div></div>
+                <div class="col-6"><div class="tengah"><img src="images/users.png" width="100px"></div></div>
             </div>
             <br>
             <div class="row">

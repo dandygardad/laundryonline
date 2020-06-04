@@ -19,7 +19,9 @@ CREATE TABLE `Order` (
   `catatan` VARCHAR (255) DEFAULT NULL,
   `garis_lintang` FLOAT(10, 6) DEFAULT NULL,
   `garis_bujur` FLOAT(10, 6) DEFAULT NULL,
-  `harga_total` INT(10) DEFAULT NULL
+  `harga_total` INT(10) DEFAULT NULL,
+  `status_pemesanan` VARCHAR(50) DEFAULT NULL,
+  `id_user` INT(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 =======

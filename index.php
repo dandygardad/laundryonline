@@ -55,29 +55,32 @@ $pdo = new database();
     <div id="carouselControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner text-center">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="pictures/login2.jpg" alt="First slide">
+                <img class="d-block w-100" src="images/laundry1.jpg">
             </div>
             <div class="carousel-caption">
-                <h6><img src="pictures/img1.png" width="350px" alt=""> </h6>
-                 <h1><b>Selamat datang di Laundry Online</b></h1>
-                <h1><b>Solusi cuci setiap hari</b></h1>
+                <h6><img src="images/img1.png" width="350px"> </h6>
+                    <h1><a class="display-4 text-light bg-dark"><b>Selamat Datang di Laundry OnLine</b></a></h1>
+                    <br>
+                    <h1><a class="text-light bg-dark">Solusi cuci setiap hari</a></h1>
                 <br>
                 <h6><a class="btn btn-primary btn-lg" href="/signup.php" role="button">Daftar Sekarang</a></h6>
-                <br><br><br><br>
+                <br><br><br><br><br>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="pictures/login.jpg" alt="Second slide">
-            <div class="vcenter text-center">
-        </div>
-    </div>
-        <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+                <img class="d-block w-100" src="images/laundry.jpg">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="images/laundry2.jpg">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="images/laundry3.jpg">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="images/laundry5.jpg">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="images/laundry6.jpg">
+            </div>
         </div>
     </div>
 
@@ -87,7 +90,8 @@ $pdo = new database();
         <div class="container">
             <div class="tengah">
             <h1 class="display-4">Tutorial Order</h1>
-            <p class="lead">Ini merupakan tata cara order laundry di website ini, mudah dan friendly.</p>
+            <br>
+            <p style="text-align:left;" class="lead">Ini merupakan tata cara order laundry di website ini, mudah dan friendly.</p>
             <hr class="my-4">
 
             <!-- Di row ini isinya merupakan tutorial beserta gambar dengan bentuk kotak ya -->
@@ -111,8 +115,10 @@ $pdo = new database();
         <div class="container">
             <div class="tengah">
             <h1 class="display-4">Daftar Harga</h1>
-            <p class="lead">Berikut ini merupakan daftar harga yang tersedia, murah!</p>
+            <br>
+            <p style="text-align:left;" class="lead">Berikut ini merupakan daftar harga yang tersedia, murah!</p>
             <hr class="my-4">
+            <br>
             <table id="pagination" class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -144,7 +150,8 @@ $pdo = new database();
         <div class="container">
           
             <h1 class="display-4">Frequently Asked Questions</h1>
-            <p class="lead">Yang sering ditanyakan pelanggan</p>
+            <br>
+            <p style="text-align:left;" class="lead">Yang sering ditanyakan pelanggan</p>
             <hr class="my-4">
             <h3>Bagaimana saya dapat menggunakan layanan Laundry Online?</h3>
             <p> dapat digunakan melalui website resmi Laundry Online yang dapat akses di www.LaundryOnlineLOL.com</p>
@@ -161,13 +168,13 @@ $pdo = new database();
     </div>
     </div>
 
-    <hr>
     <hr id="hubungi-kami">
     <div class="jumbotron jumbotron-fluid bg-dark text-white">
         <div class="container">
             <div class="tengah">
             <h1 class="display-4">Hubungi Kami!</h1>
-            <p class="lead">Jika ada keraguan, kami akan selalu tersedia untuk anda.</p>
+            <br>
+            <p style="text-align:left;" class="lead">Jika ada keraguan, kami akan selalu tersedia untuk anda.</p>
             <hr class="my-4 bg-white">
 
             <!-- Di row ini isinya merupakan tutorial beserta gambar dengan bentuk kotak ya -->
