@@ -168,7 +168,6 @@ $pdo = new database();
     </div>
     </div>
 
-    <hr>
     <hr id="hubungi-kami">
     <div class="jumbotron jumbotron-fluid bg-dark text-white">
         <div class="container">
