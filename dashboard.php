@@ -2,6 +2,7 @@
 session_start();
 require_once "database.php";
 $pdo = new database();
+$edit_form = false;
 
 //Jika user belum login dan membuka ini, maka langsung diarahkan ke halaman login
 if(isset($_SESSION['email']) == 0){
@@ -15,7 +16,32 @@ if($_SESSION['email'] == 'dandygarda@gmail.com'){
 }
 
 //Memanggil tabel pesanan
-$rows = $pdo -> getPesanan($_SESSION['name']);
+$rows = $pdo -> getPesanan($_SESSION['id']);
+
+//Mengambil data dan menaruh di kotak edit
+if(isset($_GET['edit'])){
+  $data = $pdo -> getEditPesanan($_GET['edit']);
+  $edit_form = true;
+  $name = $data['name'];
+  $email = $data['email'];
+  $nomor_telepon = $data['nomor_telepon'];
+  $id = $data['id'];
+}
+
+//Mengupdate data
+if(isset($_POST['update'])){
+  $update = $pdo -> updateData($_POST['nama'], $_POST['email'], $_POST['password'], $_POST['nomor_telepon'], $id);
+  $_SESSION['name'] = $_POST['nama'];
+  $_SESSION['email'] = $_POST['email'];
+  $_SESSION['nomortelepon'] = $_POST['nomor_telepon'];
+  // Cara get data dari spesifik nama_order terus dikirim kesini
+  header("Location: dashboard.php#profil");
+}
+
+//Untuk tombol membatalkan edit
+if(isset($_POST['cancel'])){
+  header("Location: dashboard.php#profil");
+}
 
 ?>
 
@@ -111,17 +137,55 @@ $rows = $pdo -> getPesanan($_SESSION['name']);
     </div>
     <div class="jumbotron jumbotron-fluid bg-dark text-light">
         <div class="container">
-            <h1 class="tengah" id ="customers">Informasi Profil</h1>
+            <h1 class="tengah" id ="profil">Informasi Profil</h1>
             <p class="tengah">Informasi tentang nama, e-mail, nomor telepon yang dipakai.</p>
             <br>
             <ul>
-                <li>Nama : </li>
+                <li>Nama : <?php echo ($_SESSION['name']) ?></li>
                 <br>
-                <li>E-mail : </li>
+                <li>E-mail : <?php echo ($_SESSION['email']) ?> </li>
                 <br>
-                <li>Nomor Telepon : </li>
+                <li>Nomor Telepon : <?php echo ($_SESSION['nomortelepon']) ?> </li>
             </ul>
-    <br>
+            <br> 
+            <form action="dashboard.php?edit=<?php echo $_SESSION['id']; ?>#profil" method="post">
+              <input type="hidden" name="id" value="<?=$_SESSION['id']?>">
+              <input type="submit" value="Edit" name="edit">
+            </form>
+          
+            <?php 
+    if($edit_form == false){ ?>
+        <!-- Kosong -->
+    <?php
+    } 
+    else{ ?>
+        <!-- Untuk memunculkan edit profil -->
+        <h4 class="tengah">Edit profil</h4>
+        <form method="post">
+            <p class="tengah">Nama : </p>
+            <p class="tengah"><input type="text" class = "tengah" name="nama" value="<?php echo $name; ?>"></p>
+        <p class="tengah">E-mail : </p>
+            <p class="tengah"><input type="email" class = "tengah" name="email" value="<?php echo $email; ?>"></p>
+        <p class="tengah">Password : </p>
+            <p class="tengah"><input type="password" class = "tengah" name="password" id="password" pattern=".{8,}" required title="Minimum 8 karakter" placeholder="Masukkan password"></p>
+            <p class="tengah"><input type="checkbox" onclick="myFunction()"> Show Password</p>
+        <p class="tengah">Nomor Telepon : </p>
+            <p class="tengah"><input type="text" class="tengah" name="nomor_telepon" value="<?php echo $nomor_telepon; ?>" pattern=".{10,14}" required></p>
+        
+    <?php
+    } ?>
+
+<?php 
+    if($edit_form == false){ ?>
+    <?php
+    } 
+    else{ ?>
+        <p class="tengah"><input type="submit" name="update" value="Update"/>
+        <input type="button" onclick="location.href='/dashboard.php#profil';" value="Cancel" />
+        </p>
+        </form>
+    <?php
+    } ?>
     </div>
 </div>
 

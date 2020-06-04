@@ -21,6 +21,7 @@ if(isset($_POST['submit'])){
     if (password_verify($password, $login['password'])){
         //Memasukkan data ke session
         $id = $login['id'];
+        $_SESSION['id'] = $login['id'];
         $_SESSION['name'] = $login['name'];
         $_SESSION['email'] = $email;
         $_SESSION['nomortelepon'] = $login['nomor_telepon'];
