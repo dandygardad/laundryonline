@@ -62,11 +62,10 @@ $pdo = new database();
                 <h1 class="display-4 bg-dark"><b>WELCOME TO LAUNDRY ONLINE</b></h1>
                 <br><br><br><br><br><br><br><br><br><br>
             </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="pictures/login.jpg" alt="Second slide">
+            <div class="carousel-item">
+                <img class="d-block w-100" src="pictures/login.jpg" alt="Second slide">
             <div class="vcenter text-center">
         </div>
-
     </div>
         <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

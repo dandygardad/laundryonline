@@ -80,19 +80,20 @@ class database{
         return $stmt;
     }
 
-    public function tambah_pesanan($jenis_laundry, $jumlah_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur){
-        $sql = "INSERT INTO `Order` (jenis_laundry, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur)
-        VALUES (:jenis_laundry, :jumlah_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur)";
+    public function tambah_pesanan($jenis_laundry, $massa_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur, $harga_total){
+        $sql = "INSERT INTO `Order` (jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total)
+        VALUES (:jenis_laundry, :massa_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur, :harga_total)";
         $stmt = $this-> pdo-> prepare($sql);
         $stmt->execute(array(
           ':jenis_laundry' => $jenis_laundry,
-          ':jumlah_barang' => $jumlah_barang,
+          ':massa_barang' => $massa_barang,
           ':waktu_pengambilan' => $waktu_pengambilan,
           ':waktu_pengantaran' => $waktu_pengantaran,
           ':alamat' => $alamat,
           ':catatan' => $catatan,
           ':garis_lintang' => $garis_lintang,
-          ':garis_bujur' => $garis_bujur));
+          ':garis_bujur' => $garis_bujur,
+          ':harga_total' => $harga_total));
         return $stmt;
     }
 

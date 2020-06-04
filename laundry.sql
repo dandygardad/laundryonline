@@ -11,13 +11,14 @@ CREATE TABLE `users` (
 CREATE TABLE `Order` (
   `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `jenis_laundry` VARCHAR(8) DEFAULT NULL,
-  `jumlah_barang` INT(3) DEFAULT NULL,
+  `massa_barang` INT(3) DEFAULT NULL,
   `waktu_pengambilan` DATE DEFAULT NULL,
   `waktu_pengantaran` DATE DEFAULT NULL,
   `alamat` VARCHAR (80) DEFAULT NULL,
   `catatan` VARCHAR (255) DEFAULT NULL,
   `garis_lintang` FLOAT(10, 6) DEFAULT NULL,
-  `garis_bujur` FLOAT(10, 6) DEFAULT NULL
+  `garis_bujur` FLOAT(10, 6) DEFAULT NULL,
+  `harga_total` INT(10) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `harga` (

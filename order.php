@@ -13,7 +13,7 @@ $pdo = new database();
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //Mencegah data pesanan kosong
-	if(empty($_POST['jenis_laundry']) || empty($_POST['jumlahBarang']) || empty($_POST['tanggalPengambilan']) || 
+	if(empty($_POST['jenis_laundry']) || empty($_POST['beratBarang']) || empty($_POST['tanggalPengambilan']) || 
 	empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan']) || empty($_POST['lat']) || empty($_POST['lng'])) {
         echo '<div class="box"><div class="square">';
         echo("Field tidak boleh kosong!");
@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		unset($_SESSION['message']);
 		
         //Masukkan data pesanan ke database
-		$pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], 
-		$_POST['catatan'], $_POST['lat'], $_POST['lng']);
+		$pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['beratBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], 
+		$_POST['catatan'], $_POST['lat'], $_POST['lng'], $_POST['hargaTotal']);
     }
 }
 ?>
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 	</head>
 	<body>
-		<div class="page-content" style="background-image: url('pictures/login.jpg')">
+		<div class="page-content" style="background-image: url('pictures/laundry2.jpg')">
 			<div class="pemesanan">
 				<div class="order-form">
 					<div class="order-header">
@@ -70,23 +70,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                                             <input type="radio" name="jenis_laundry" value="satuan">
                                         </label> Satuan
 									</div>
+									<br> 
 									<div class="service-desc-box">
 										<span class="service-desc-box-text">
-											<strong> Deskripsi Jasa:</strong> <br> <ol><li>Perhitungan biaya berdasarkan timbangan yang di laundry</li><li>Minimum order 5 kg</li></ol>
+											<strong> Deskripsi Jasa:</strong> 
+											<ol>
+												<li>Perhitungan biaya berdasarkan 1 Kg = Rp. 5,000</li>
+												<li>Minimum Order 4 Kg & Maksimum Order 20 Kg</li>
+											</ol>
 										</span>
 									</div>
 									<div class="form-row">
 										<div class="form-holder form-holder-1">
 											<label class="form-row-inner">
-												<input type="number" class="form-control" id="jumlahBarang" name="jumlahBarang" min="1" max="50" required>
-												<span class="label">Jumlah Barang</span>
+												<input type="number" class="form-control" id="beratBarang" name="beratBarang" min="4" max="20" required>
+												<span class="label">Berat Barang (Kg)</span>
 												<span class="border"></span>
 											</label>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-holder form-holder-2">
-											<label class="form-row-inner" for="tanggalPengambilan">Pilih Tanggal Pengambilan</label>
+											<label class="form-row-inner" for="tanggalPengambilan">Pilih Tanggal Pengambilan :</label>
 											<div class="form-holder">
 												<input type="date" id="tanggalPengambilan" name="tanggalPengambilan">
 											</div>
@@ -94,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 									</div>
 									<div class="form-row">
 										<div class="form-holder form-holder-2">
-											<label class="form-row-inner" for="tanggalPengantaran">Pilih Tanggal Pengantaran</label>
+											<label class="form-row-inner" for="tanggalPengantaran">Pilih Tanggal Pengantaran :</label>
 											<div class="form-holder">
 												<input type="date" id="tanggalPengantaran" name="tanggalPengantaran">
 											</div>
@@ -103,12 +108,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 									<div class="form-row">
 										<div class="form-holder form-holder-2">
 											<label class="form-row-inner">
-												<input type="text" class="form-control" id="catatan" name="catatan" required>
+												<input type="text" class="form-control" id="catatan" name="catatan">
 												<span class="label">Tambahkan Catatan</span>
 												<span class="border"></span>
 											</label>
 										</div>
 									</div>
+									<input type="hidden" id="hargaTotal" name="hargaTotal" value="">
 								</div>
 							</section>
 							<!-- Pilihan 2 -->
@@ -128,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 											</label>
 										</div>
 									</div>
-									<div id="googleMaps" style="width:100%;height:380px;"></div>
+									<div id="googleMaps" style="width:100%; height:380px;"></div>
 									<input type="hidden" id="lat" name="lat" value="">
 									<input type="hidden" id="lng" name="lng" value="">
 								</div>
@@ -220,8 +226,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 													<td id="jenis_laundry-val"></td>
 												</tr>
 												<tr class="space-row">
-													<th>Jumlah Barang :</th>
-													<td id="jumlah_barang-val"></td>
+													<th>Berat Barang :</th>
+													<td id="berat_barang-val"></td>
 												</tr>
 												<tr class="space-row">
 													<th>Catatan Tambahan :</th>
@@ -264,6 +270,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		<script src="js/jquery.steps.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
 		<script src="js/order.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js"></script>
+		<script src="https://maps.google.com/maps/api/js?"></script> 
 	</body>
 </html>
