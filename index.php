@@ -58,9 +58,12 @@ $pdo = new database();
                 <img class="d-block w-100" src="pictures/login2.jpg" alt="First slide">
             </div>
             <div class="carousel-caption">
-                <img src="pictures/img1.png" width="500px" alt=""> 
-                <h1 class="display-4 bg-dark"><b>WELCOME TO LAUNDRY ONLINE</b></h1>
-                <br><br><br><br><br><br><br><br><br><br>
+                <h6><img src="pictures/img1.png" width="350px" alt=""> </h6>
+                 <h1><b>Selamat datang di Laundry Online</b></h1>
+                <h1><b>Solusi cuci setiap hari</b></h1>
+                <br>
+                <h6><a class="btn btn-primary btn-lg" href="/signup.php" role="button">Daftar Sekarang</a></h6>
+                <br><br><br><br>
             </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="pictures/login.jpg" alt="Second slide">
@@ -160,15 +163,6 @@ $pdo = new database();
     </div>
 
     <hr>
-    <div class="jumbotron">
-        <div class="tengah">
-        <h1 class="display-4"><b>Tunggu Apalagi?</b></h1><br>
-        <p class="lead">Ayo pesan sekarang, kami akan jemput langsung laundry anda!</p>
-        <hr class="my-4">
-        <p>Klik link dibawah ini untuk mendaftar!</p>
-        <a class="btn btn-primary btn-lg" href="/signup.php" role="button">Daftar Sekarang</a>
-        </div>
-    </div>
     <hr id="hubungi-kami">
     <div class="jumbotron jumbotron-fluid bg-dark text-white">
         <div class="container">
