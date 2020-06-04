@@ -8,7 +8,7 @@ CREATE TABLE `users` (
   KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
 
-CREATE TABLE `order` (
+CREATE TABLE `Order` (
   `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `jenis_laundry` VARCHAR(8) DEFAULT NULL,
   `jumlah_barang` INT(3) DEFAULT NULL,

@@ -22,20 +22,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //Memasukkan Data Pesanan
     else{
-        $_SESSION['message'] = 'Pesanan telah ditambahkan, Silahkan kembali <a href="/index.php">Home</a> ';
+        $_SESSION['message'] = 'Pesanan Berhasil Ditambahkan!, Silahkan Kembali <a href="/index.php">Home</a> ';
         echo '<div class="box"><div class="square">';
         echo $_SESSION['message'];
         echo '</div></div>';
-        unset($_SESSION['message']);
-        
+		unset($_SESSION['message']);
+		
         //Masukkan data pesanan ke database
-        $pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], $_POST['catatan'], $_POST['lat'], $_POST['lng']);
+		$pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], 
+		$_POST['catatan'], $_POST['lat'], $_POST['lng']);
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="id">
 	<head>
 		<meta charset="utf-8">
 		<title>Pemesanan Laundry</title>
@@ -52,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 						<h3 class="heading">Laundry onLine</h3>
 						<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
 					</div>
-					<form class="form-order" action="#" method="POST" name="this" id="this" role="form">
+					<form class="form-order" action="" method="post" name="form-order" id="form-order" role="form">
 							<h2>
 								<span class="step-icon"><i class="zmdi zmdi-shopping-cart"></i></span>
 								<span class="step-text">Pemesanan</span>
@@ -62,8 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 									<h3>Silahkan Isi Form Pemesanan Anda</h3>
 									<div class="form-group" id="radio">
 										<label>Pilih Jenis Laundry :</label>
-										<input type="radio" name="jenis_laundry" value="kiloan" checked> Kiloan
-										<input type="radio" name="jenis_laundry" value="satuan"> Satuan
+                                        <label>
+                                            <input type="radio" name="jenis_laundry" value="kiloan" checked>
+                                        </label> Kiloan
+                                        <label>
+                                            <input type="radio" name="jenis_laundry" value="satuan">
+                                        </label> Satuan
 									</div>
 									<div class="service-desc-box">
 										<span class="service-desc-box-text">
@@ -212,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 											<tbody>
 												<tr class="space-row">
 													<th>Jenis Laundry :</th>
-													<td id="jenis_laundry-val" name="jenis_laundry-val"></td>
+													<td id="jenis_laundry-val"></td>
 												</tr>
 												<tr class="space-row">
 													<th>Jumlah Barang :</th>

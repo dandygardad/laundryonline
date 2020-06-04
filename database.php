@@ -7,13 +7,14 @@ class database{
             $userName = 'root';
             $password = '';
             $dbName = 'laundry';
-            $this-> pdo = new PDO("mysql:host=$serverName;port=3306;dbname=$dbName",$userName, $password); 
+            $this-> pdo = new PDO("mysql:host=$serverName;port=3306;dbname=$dbName",$userName, $password);
+            $this-> pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(PDOException $e){
             echo 'Error, dikarenakan ' . $e ->getMessage();
         }
-    
     }
+
     public function tambah_data($nama, $email, $password, $nomor_telepon){
         $sql = "INSERT INTO users (name, email, password, nomor_telepon) 
         VALUES (:name, :email, :password, :nomor_telepon)";
@@ -80,9 +81,9 @@ class database{
     }
 
     public function tambah_pesanan($jenis_laundry, $jumlah_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur){
-        $sql = "INSERT INTO order (jenis_laundry, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur) 
+        $sql = "INSERT INTO `Order` (jenis_laundry, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur)
         VALUES (:jenis_laundry, :jumlah_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur)";
-        $stmt = $this -> pdo -> prepare($sql);
+        $stmt = $this-> pdo-> prepare($sql);
         $stmt->execute(array(
           ':jenis_laundry' => $jenis_laundry,
           ':jumlah_barang' => $jumlah_barang,

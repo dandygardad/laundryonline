@@ -17,10 +17,7 @@ $(function(){
         onFinished: function (event, currentIndex) {
             var form = $(this);
             // submit form input
-            // $("#form-total").submit();
-                form.submit();
-            // alert("Pesanan Berhasil Ditambahkan!");
-            // location.href="index.html"
+            form.submit();
         },
 
         onStepChanging: function (event, currentIndex, newIndex) { 
