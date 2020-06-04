@@ -80,9 +80,9 @@ class database{
         return $stmt;
     }
 
-    public function tambah_pesanan($jenis_laundry, $massa_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur, $harga_total, $status){
-        $sql = "INSERT INTO `Order` (jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan)
-        VALUES (:jenis_laundry, :massa_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur, :harga_total, :status_pemesanan)";
+    public function tambah_pesanan($jenis_laundry, $massa_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur, $harga_total, $status, $nama){
+        $sql = "INSERT INTO `Order` (jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan, nama_user)
+        VALUES (:jenis_laundry, :massa_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur, :harga_total, :status_pemesanan, :nama_user)";
         $stmt = $this-> pdo-> prepare($sql);
         $stmt->execute(array(
           ':jenis_laundry' => $jenis_laundry,
@@ -94,7 +94,8 @@ class database{
           ':garis_lintang' => $garis_lintang,
           ':garis_bujur' => $garis_bujur,
           ':harga_total' => $harga_total,
-          ':status_pemesanan' => $status));
+          ':status_pemesanan' => $status,
+          ':nama_user' => $nama));
         return $stmt;
     }
 
@@ -111,9 +112,16 @@ class database{
     }
 
     public function showPesanan(){
-        $sql = "SELECT jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, harga_total, status_pemesanan FROM `Order`";
+        $sql = "SELECT jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, harga_total, status_pemesanan, nama_user FROM `Order`";
         $stmt = $this -> pdo -> query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getPesanan($name_filter){
+        $sql = "SELECT jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, harga_total, status_pemesanan, nama_user FROM `Order` WHERE nama_user = :zip";
+        $stmt = $this -> pdo -> prepare($sql);
+        $stmt->execute(array(':zip' => $name_filter));
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
 }
 ?>

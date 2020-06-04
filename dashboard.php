@@ -15,7 +15,7 @@ if($_SESSION['email'] == 'dandygarda@gmail.com'){
 }
 
 //Memanggil tabel pesanan
-$rows = $pdo -> showPesanan();
+$rows = $pdo -> getPesanan($_SESSION['name']);
 
 ?>
 
