@@ -80,9 +80,9 @@ class database{
         return $stmt;
     }
 
-    public function tambah_pesanan($jenis_laundry, $massa_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur, $harga_total){
-        $sql = "INSERT INTO `Order` (jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total)
-        VALUES (:jenis_laundry, :massa_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur, :harga_total)";
+    public function tambah_pesanan($jenis_laundry, $massa_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur, $harga_total, $status){
+        $sql = "INSERT INTO `Order` (jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan)
+        VALUES (:jenis_laundry, :massa_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur, :harga_total, :status_pemesanan)";
         $stmt = $this-> pdo-> prepare($sql);
         $stmt->execute(array(
           ':jenis_laundry' => $jenis_laundry,
@@ -93,7 +93,8 @@ class database{
           ':catatan' => $catatan,
           ':garis_lintang' => $garis_lintang,
           ':garis_bujur' => $garis_bujur,
-          ':harga_total' => $harga_total));
+          ':harga_total' => $harga_total,
+          ':status_pemesanan' => $status));
         return $stmt;
     }
 
@@ -106,6 +107,12 @@ class database{
     public function getHarga(){
         $sql = "SELECT * FROM harga";
         $stmt = $this -> pdo ->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function showPesanan(){
+        $sql = "SELECT jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, harga_total, status_pemesanan FROM `Order`";
+        $stmt = $this -> pdo -> query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

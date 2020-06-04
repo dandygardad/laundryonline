@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "database.php";
+$pdo = new database();
 
 //Jika user belum login dan membuka ini, maka langsung diarahkan ke halaman login
 if(isset($_SESSION['email']) == 0){
@@ -12,6 +13,9 @@ if(isset($_SESSION['email']) == 0){
 if($_SESSION['email'] == 'dandygarda@gmail.com'){
     header('Location: admin_dash.php');
 }
+
+//Memanggil tabel pesanan
+$rows = $pdo -> showPesanan();
 
 ?>
 
@@ -75,10 +79,12 @@ if($_SESSION['email'] == 'dandygarda@gmail.com'){
                 <thead>
                     <tr>
                         <th scope="col">Jenis Laundry</th>
-                        <th scope="col">Jumlah Barang</th>
+                        <th scope="col">Massa Barang</th>
                         <th scope="col">Waktu Pengambilan</th>
+                        <th scope="col">Waktu Pengantaran</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Catatan</th>
+                        <th scope="col">Harga Total</th>
                         <th scope="col">Status Pemesanan</th>
                     </tr>
                 </thead>
@@ -87,10 +93,14 @@ if($_SESSION['email'] == 'dandygarda@gmail.com'){
                         foreach ( $rows as $row ) {
                     ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td><?=$row['jenis_laundry'] ?></td>
+                        <td><?=$row['massa_barang'] ?></td>
+                        <td><?=$row['waktu_pengambilan'] ?></td>
+                        <td><?=$row['waktu_pengantaran'] ?></td>
+                        <td><?=$row['alamat'] ?></td>
+                        <td><?=$row['catatan'] ?></td>
+                        <td><?=$row['harga_total'] ?></td>
+                        <td><?=$row['status_pemesanan'] ?></td>
                     </tr>
                     <?php
                         }
