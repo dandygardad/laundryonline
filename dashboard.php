@@ -83,17 +83,23 @@ if($_SESSION['email'] == 'dandygarda@gmail.com'){
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+                        foreach ( $rows as $row ) {
+                    ?>
                     <tr>
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                     </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="jumbotron jumbotron-fluid bg-white">
+    <div class="jumbotron jumbotron-fluid bg-dark text-light">
         <div class="container">
             <h1 class="tengah" id ="customers">Informasi Profil</h1>
             <p class="tengah">Informasi tentang nama, e-mail, nomor telepon yang dipakai.</p>
