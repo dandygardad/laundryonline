@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //Mencegah data pesanan kosong
 	if(empty($_POST['jenis_laundry']) || empty($_POST['jumlahBeratBarang']) || empty($_POST['tanggalPengambilan']) || 
-	empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan']) || empty($_POST['lat']) || empty($_POST['lng'])) {
+	empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan']) || empty($_POST['lat']) || empty($_POST['lng']) || empty($_POST['hargaTotal'])) {
         echo '<div class="box"><div class="square">';
         echo("Field tidak boleh kosong!");
         echo '</div></div>';
@@ -29,13 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		unset($_SESSION['message']);
 		$status = "Tunggu Konfirmasi";
         //Masukkan data pesanan ke database
-<<<<<<< HEAD
 		$pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBeratBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], 
-		$_POST['catatan'], $_POST['lat'], $_POST['lng'], $_POST['hargaTotal']);
-=======
-		$pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['beratBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], 
 		$_POST['catatan'], $_POST['lat'], $_POST['lng'], $_POST['hargaTotal'], $status, $_SESSION['id']);
->>>>>>> bc5a61314e60c29461e3593a199f4f1bcb9e4f0a
     }
 }
 ?>
