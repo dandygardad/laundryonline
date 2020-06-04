@@ -177,7 +177,7 @@ $pdo = new database();
                     <h4>
                         <b>Alamat kami :</b>
                     </h4>
-                    <p>Jl. abc No. 40B, Sulawesi Selatan 12560</p>
+                    <p>Jalan Malino No 70 Borongloe Kecamatan Bontomarannu, Mawang, Kec. Somba Opu, Kabupaten Gowa, Sulawesi Selatan 92111</p>
                     <br>
                     <h4>
                         <b>Nomor Telepon :</b>
@@ -214,29 +214,23 @@ $pdo = new database();
         // fungsi initialize untuk mempersiapkan peta
         function initialize() {
             var propertiPeta = {
-                center:new google.maps.LatLng(-5.2304254160715065, 119.50257641283645),
+                center:new google.maps.LatLng(-5.2266391, 119.4978739),
                 zoom:15,
                 mapTypeId:google.maps.MapTypeId.ROADMAP
             };
 
             var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
 
-
-
             // even listener ketika peta diklik
-
             google.maps.event.addListener(peta, 'click', function(event) {
 
                 taruhMarker(this, event.latLng);
 
             });
 
-
-
             // membuat Marker untuk halaman konfirmasi
-
             var marker=new google.maps.Marker({
-                position: new google.maps.LatLng(-5.2304254160715065, 119.50257641283645),
+                position: new google.maps.LatLng(-5.2266391, 119.4978739),
                 map: peta,
                 animation: google.maps.Animation.BOUNCE
             });
