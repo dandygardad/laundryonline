@@ -9,9 +9,9 @@ $(function(){
         transitionEffectSpeed: 500,
         titleTemplate : '<div class="title">#title#</div>',
         labels: {
-            previous : 'Previous',
-            next : 'Next Step',
-            finish :'Submit',
+            previous : 'Sebelumnya',
+            next : 'Selanjutnya',
+            finish :'Selesai',
             current : ''
         },
 
@@ -23,7 +23,7 @@ $(function(){
 
         onStepChanging: function (event, currentIndex, newIndex) { 
             // Mengambil nilai dari elemen masukan
-            var jenisLaundry = $('form input[type=radio]:checked').val();
+            var jenisLaundry = $("input[name='jenis_laundry']:checked").val();
             var massaBarang = $('#beratBarang').val();
             var jumlahBarang = parseFloat($('#jumlahBarang').val());
             var waktuPengambilan = $('#tanggalPengambilan').val();
@@ -36,10 +36,11 @@ $(function(){
             var hargaTotalKiloan = massaBarang * hargaPerKg;
             var hargaTotalSatuan = parseFloat($('#harga-sementara').val());
             var hargaTotalK;
+            var metodePembayaran = $("input[name='pay']:checked").val();
             
             // Menghitung harga total jika kiloan berdasarkan berat barang dan jika satuan maka berdasarkan jenis material yang di laundry,
             // serta mengatur ulang nilai beratBarang dan jumlahBarang
-            if($('form input[type=radio]:checked').val() == 'kiloan'){
+            if($("input[name='jenis_laundry']:checked").val() == 'Kiloan'){
                 hargaTotalK = "Rp. " + hargaTotalKiloan;
             } else {
                 hargaTotalK = "Rp. " + hargaTotalSatuan;
@@ -56,6 +57,7 @@ $(function(){
             $('#lng-val').text(lng);
             $('#catatan-val').text(catatan);
             $('#harga-val').text(hargaTotalK);
+            $('#pay-val').text(metodePembayaran);
 
             return true;
         }
@@ -63,7 +65,7 @@ $(function(){
     
     // Memeriksa tombol radio mana yang dipilih dan menampilkan form dan tabel
     $(":radio.jenis_laundry").click(function() {
-        if($('form input[type=radio]:checked').val() == 'kiloan'){
+        if($("input[name='jenis_laundry']:checked").val() == 'Kiloan'){
             $('#kiloan_checked').show();
             $('#satuan_checked').hide();
             $('#beratBarangText').show();
@@ -112,7 +114,7 @@ $(function(){
             barang[i].onclick = updateHarga;
           }
         }
-      }
+    }
       
       // Dipanggil saat kotak barang dicek
       function updateHarga(e) {
@@ -134,10 +136,10 @@ $(function(){
         document.getElementById("harga-sementara").value = val;
         document.getElementById("jumlahBarang").value = jml;
         document.getElementById("hargaTotal").value = val;
-      }
+    }
 
-      // Memanggil method menghitungCheckbox()
-      menghitungCheckbox();
+    // Memanggil method menghitungCheckbox()
+    menghitungCheckbox();
 
     // Menentukan marker pada maps
     var marker;
@@ -178,7 +180,6 @@ $(function(){
         google.maps.event.addListener(peta, 'click', function(event) {
             taruhMarker(this, event.latLng);
         });
-        
     }
     // event jendela di-load  
     google.maps.event.addDomListener(window, 'load', initialize);
