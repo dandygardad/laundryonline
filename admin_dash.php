@@ -38,7 +38,7 @@ if (isset($_POST['delete'])){
     }
 }
 
-//Mengambil data dan menaruh di kotak edit
+//Mengambil data dan menaruh di kotak edit customer
 if(isset($_GET['edit'])){
     $data = $pdo -> getData($_GET['edit']);
     $edit_form = true;
@@ -48,15 +48,46 @@ if(isset($_GET['edit'])){
     $id = $data['id'];
 }
 
-//Mengupdate data
+//Mengambil data dan menaruh di kotak view order
+if(isset($_GET['view'])){
+    $pemesanan = $pdo -> getOrder($_GET['view']);
+    $view_order = true;
+    $userId = $pemesanan['id_user'];
+    $jenisLaundry = $pemesanan['jenis_laundry'];
+    $massaBarang = $pemesanan['massa_barang'];
+    $jumlahBarang = $pemesanan['jumlah_barang'];
+    $waktuPengambilan = $pemesanan['waktu_pengambilan'];
+    $waktuPengantaran = $pemesanan['waktu_pengantaran'];
+    $alamat = $pemesanan['alamat'];
+    $catatan = $pemesanan['catatan'];
+    $garisLintang = $pemesanan['garis_lintang'];
+    $garisBujur = $pemesanan['garis_bujur'];
+    $hargaTotal = $pemesanan['harga_total'];
+    $statusPemesanan = $pemesanan['status_pemesanan'];
+    $orderId = $pemesanan['id'];
+}
+
+//Mengupdate data customers
 if(isset($_POST['update'])){
     $update = $pdo -> updateData($_POST['nama'], $_POST['email'], $_POST['password'], $_POST['nomor_telepon'], $id);
     header("Location: admin_dash.php#customers");
 }
 
+//Mengupdate data order
+if(isset($_POST['updates'])){
+    // $radio_status = $_POST['status'];
+    // $update = $pdo -> updateStatus($radio_status, $orderId);
+    header("Location: admin_dash.php#pesanan");
+}
+
 //Untuk tombol membatalkan edit
 if(isset($_POST['cancel'])){
     header("Location: admin_dash.php#customers");
+}
+
+//Untuk tombol membatalkan edit
+if(isset($_POST['cancels'])){
+    header("Location: admin_dash.php#pesanan");
 }
 
 //Mengambil jumlah data customers
@@ -167,9 +198,9 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <td><?=$order['harga_total'] ?></td>
                         <td><?=$order['status_pemesanan'] ?></td>
                         <td>
-                            <form action="admin_dash.php?view=<?php echo $order['id_user']; ?>#pesanan" method="post">
+                            <form action="admin_dash.php?view=<?php echo $order['id']; ?>#pesanan" method="post">
                                 <input type="hidden" name="id" value="<?=$order['id']?>">
-                                <input type="submit" value="View" name="edit">
+                                <input type="submit" value="View" name="view">
                             </form>
                         </td>
                     </tr>
@@ -178,12 +209,52 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                     ?>
                 </tbody>
             </table>
+            <br><br>
             <?php 
                 if ($view_order == false){
                     // Kosong
                 }
-                else
+                else{
             ?>
+                    <h4 class="tengah">View Data</h4>
+                    <ul>
+                        <li>ID User : <?php echo $userId; ?></li><br>
+                        <li>Jenis Laundry : <?php echo $jenisLaundry; ?></li><br>
+                        <li>Massa Barang : <?php echo $massaBarang; ?></li><br>
+                        <li>Jumlah Barang : <?php echo $jumlahBarang; ?></li><br>
+                        <li>Waktu Pengambilan : <?php echo $waktuPengambilan; ?></li><br>
+                        <li>Waktu Pengantaran : <?php echo $waktuPengantaran; ?></li><br>
+                        <li>Alamat : <?php echo $alamat; ?></li><br>
+                        <li>Catatan : <?php echo $catatan; ?></li><br>
+                        <li>Harga Total : <?php echo $hargaTotal; ?></li><br>
+                        <li>Lokasi :</li><br>
+                        <!-- Tambahkan google maps sesuai lat lang -->
+                        <li>Status Pemesanan :</li><br>
+                        <input type="radio" id="tunggu_konfirmasi" name="status" value="Tunggu Konfirmasi" checked>
+                        <label for="tunggu_konfirmasi">Tunggu Konfirmasi</label><br>
+                        <input type="radio" id="diambil_kurir" name="status" value="Kurir mengambil laundry">
+                        <label for="diambil_kurir">Kurir mengambil laundry</label><br>
+                        <input type="radio" id="dicuci" name="status" value="Sementara dicuci">
+                        <label for="dicuci">Sementara dicuci</label><br>
+                        <input type="radio" id="diantar_kurir" name="status" value="Kurir mengantar laundry">
+                        <label for="diantar_kurir">Kurir mengantar laundry</label><br>
+                        <input type="radio" id="selesai" name="status" value="Selesai">
+                        <label for="selesai">Selesai</label>
+                    </ul>
+                    <?php
+                }
+                    ?>
+                <?php 
+                    if($view_order == false){
+                        //Kosong
+                    } 
+                    else{ ?>
+                        <p class="tengah"><input type="submit" name="updates" value="Update"/>
+                            <input type="submit" name="cancels" value="Cancel"/>
+                        </p>
+                <?php
+                    } 
+                ?>
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid bg-white">
@@ -233,9 +304,8 @@ $banyakpesanan = $pdo -> banyak_pesanan();
         </div>
         <br>
         <?php 
-    if($edit_form == false){ ?>
-        <!-- Kosong -->
-    <?php
+    if($edit_form == false){
+    // Kosong
     } 
     else{ ?>
         <!-- Untuk memunculkan edit customer -->

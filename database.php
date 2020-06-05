@@ -119,7 +119,7 @@ class database{
     }
 
     public function showPesanan(){
-        $sql = "SELECT jenis_laundry, massa_barang, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan, id_user FROM `Order`";
+        $sql = "SELECT id, jenis_laundry, massa_barang, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan, id_user FROM `Order`";
         $stmt = $this -> pdo -> query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -136,6 +136,22 @@ class database{
         $stmt = $this -> pdo ->prepare($sql);
         $stmt->execute(array(':zip' => $edit));
         return $stmt -> fetch();
+    }
+
+    public function getOrder($edit){
+        $sql = "SELECT * FROM `Order` WHERE id = :zip";
+        $stmt = $this -> pdo ->prepare($sql);
+        $stmt->execute(array(':zip' => $edit));
+        return $stmt -> fetch();
+    }
+
+    public function updateStatus($status, $id){
+        $sql = "UPDATE `Order` SET status_pemesanan=:status_pemesanan WHERE id=:id";
+        $stmt = $this -> pdo -> prepare($sql);
+        $stmt->execute(array(
+            ':status_pemesanan' => $status,
+            ':id' => $id));
+        return $stmt;
     }
 }
 ?>
