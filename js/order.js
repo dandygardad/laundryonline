@@ -32,6 +32,7 @@ $(function(){
             var alamat = $('#alamat').val();
             var lat = $('#lat').val();
             var lng = $('#lng').val();
+            var koordinat;
             var hargaPerKg = 5000;
             var hargaTotalKiloan = massaBarang * hargaPerKg;
             var hargaTotalSatuan = parseFloat($('#harga-sementara').val());
@@ -46,6 +47,13 @@ $(function(){
                 hargaTotalK = "Rp. " + hargaTotalSatuan;
             }
 
+            // Memeriksa apakah titik lokasi di Peta telah ditentukan
+            if(lat == 0){
+                koordinat = '';
+            } else {
+                koordinat = (lat+", "+lng);
+            }
+
             // Memasukkan Nilai pada Pilihan Konfirmasi
             $('#jenis_laundry-val').text(jenisLaundry);
             $('#berat_barang-val').text(massaBarang);
@@ -53,8 +61,7 @@ $(function(){
             $('#waktu_pengambilan-val').text(waktuPengambilan);
             $('#waktu_pengantaran-val').text(waktuPengantaran);
             $('#alamat-val').text(alamat);
-            $('#lat-val').text(lat);
-            $('#lng-val').text(lng);
+            $('#coor-val').text(koordinat);
             $('#catatan-val').text(catatan);
             $('#harga-val').text(hargaTotalK);
             $('#pay-val').text(metodePembayaran);
@@ -182,5 +189,5 @@ $(function(){
         });
     }
     // event jendela di-load  
-    google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initialize); 
 });

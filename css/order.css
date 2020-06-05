@@ -491,6 +491,22 @@ body {
 	text-decoration: none;
     padding: 13px 34px;
 }
+.box {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.square {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 0px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
 
 /* Responsive */
 @media screen and (max-width: 1199px) {

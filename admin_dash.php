@@ -229,7 +229,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <li>Catatan : <?php echo $catatan; ?></li><br>
                         <li>Harga Total : <?php echo $hargaTotal; ?></li><br>
                         <li>Lokasi : </li><br>
-                        <div id="googleMaps" style="width:100%;height:380px;"></div>
+                        <div id="googleMaps" style="width:50%; height:440px; border:solid black 1px;"></div>
                         <!-- Tambahkan google maps sesuai lat lang -->
                         <form method="post">
                         <li>Status Pemesanan :</li><br>
@@ -381,20 +381,23 @@ function myFunction(){
 // fungsi initialize untuk mempersiapkan peta
 function initMap() {
 
+        // Menentukan koordinat awal peta, perbesaran, serta jenis peta
         var propertiPeta = {
             center:new google.maps.LatLng(<?php echo $garisLintang; ?>, <?php echo $garisBujur; ?>),
             zoom:15,
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };
 
+        // Inisiasi peta sesuai dengan Id yang telah ditentukan
         var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
-
+        
+        // Menambahkan penanda pada peta
         var marker=new google.maps.Marker({
             position: new google.maps.LatLng(<?php echo $garisLintang; ?>, <?php echo $garisBujur; ?>),
             map: peta,
             animation: google.maps.Animation.BOUNCE
         });
     }
-    // event jendela di-load  
+    // event jendela dimuat  
     google.maps.event.addDomListener(window, 'load', initMap);
 </script>

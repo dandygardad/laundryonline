@@ -21,7 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //Memasukkan Data Pesanan
     else{
-        $_SESSION['message'] = 'Pesanan Berhasil Ditambahkan!, Silahkan Kembali <a href="/index.php">Home</a> ';
+		
+        $_SESSION['message'] = 'Pesanan Berhasil Ditambahkan!, Silahkan Kembali <a href="/index.php">Home</a>';
         echo '<div class="box"><div class="square">';
         echo $_SESSION['message'];
         echo '</div></div>';
@@ -79,10 +80,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 										<h5> Deskripsi Jasa:</h5> 
 										<ol>
 											<li>Perhitungan biaya berdasarkan 1 Kg = Rp. 5,000</li>
-											<li>Minimum Order 4 Kg & Maksimum Order 20 Kg</li>
+											<li>Minimum Order 4 Kg</li>
 										</ol>
 										<label class="form-row-inner">
-											<input type="number" class="form-control" id="beratBarang" name="beratBarang" min="4" max="20" required>
+											<input type="number" class="form-control" id="beratBarang" name="beratBarang" min="4" max="50" required>
 											<span class="label">Berat Barang (Kg)</span>
 											<span class="border"></span>
 										</label>
@@ -97,20 +98,89 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 										</ol>
 									</div>
 									<div class="form-group" id="checkbox">
-										<input type="checkbox" id="handuk_mandi" name="handuk_mandi" value="10000">
-										<label for="checkbox">Handuk Mandi</label><br>
-										<input type="checkbox" id="sarung_bantal" name="sarung_bantal" value="20000">
-										<label for="checkbox">Sarung Bantal</label><br>
-										<input type="checkbox" id="sarung_guling" name="sarung_guling" value="30000">
-										<label for="checkbox">Sarung Guling</label><br>
-										<input type="checkbox" id="sarung_bantalKursi" name="sarung_bantalKursi" value="40000">
-										<label for="checkbox">Sarung Bantal Kursi</label><br>
-										<input type="checkbox" id="sprei" name="sprei" value="50000">
-										<label for="checkbox">Sprei (160 x 200 cm)</label><br>
-										<input type="checkbox" id="selimut" name="selimut" value="60000">
-										<label for="checkbox">Selimut (200 x 200 cm)</label><br>
-										<input type="checkbox" id="bed_cover" name="bed_cover" value="70000">
-										<label for="checkbox">Bed Cover (200 x 200 cm)</label><br><br>
+										<table class="table">
+											<td>
+												<input type="checkbox" id="baju_kaos" name="baju_kaos" value="10000">
+												<label for="checkbox">Kaos/T-Shirt - Rp. 10,000</label><br>
+
+												<input type="checkbox" id="kemeja" name="kemeja" value="20000">
+												<label for="checkbox">Kemeja - Rp. 20,000</label><br>
+
+												<input type="checkbox" id="kemeja_batik" name="kemeja_batik" value="20000">
+												<label for="checkbox">Kemeja Batik - Rp. 20,000</label><br>
+
+												<input type="checkbox" id="baju_muslim" name="baju_muslim" value="20000">
+												<label for="checkbox">Baju Muslim - Rp. 20,000</label><br>
+			
+												<input type="checkbox" id="kebaya" name="kebaya" value="40000">
+												<label for="checkbox">Kebaya - Rp. 40,000</label><br>
+
+												<input type="checkbox" id="gaun_panjang" name="gaun_panjang" value="25000">
+												<label for="checkbox">Gaun Panjang - Rp. 25,000</label><br>
+												
+												<input type="checkbox" id="rok" name="rok" value="15000">
+												<label for="checkbox">Rok - Rp. 15,000</label><br>
+
+												<input type="checkbox" id="sweater" name="sweater" value="20000">
+												<label for="checkbox">Baju Hangat/Sweater - Rp. 20,000</label><br>
+
+												<input type="checkbox" id="jaket" name="jaket" value="30000">
+												<label for="checkbox">Jaket - Rp. 30,000</label><br>
+
+												<input type="checkbox" id="jas" name="jas" value="45000">
+												<label for="checkbox">Jas/Blazer - Rp. 45,000</label><br>
+
+												<input type="checkbox" id="celana_pendek" name="celana_pendek" value="10000">
+												<label for="checkbox">Celana Pendek - Rp. 10,000</label><br>
+
+												<input type="checkbox" id="celana_panjang" name="celana_panjang" value="20000">
+												<label for="checkbox">Celana Panjang - Rp. 20,000</label><br>
+
+												<input type="checkbox" id="sarung" name="sarung" value="20000">
+												<label for="checkbox">Sarung - Rp. 20,000</label><br>
+											</td>
+
+											<td>
+												<input type="checkbox" id="tas" name="tas" value="30000">
+												<label for="checkbox">Tas Sekolah/Ransel - Rp. 30,000</label><br>
+
+												<input type="checkbox" id="kerudung" name="kerudung" value="10000">
+												<label for="checkbox">Selendang/Kerudung - Rp. 10,000</label><br>
+
+												<input type="checkbox" id="blouse" name="blouse" value="15000">
+												<label for="checkbox">Blouse - Rp. 15,000</label><br>
+
+												<input type="checkbox" id="mukena" name="mukena" value="25000">
+												<label for="checkbox">Mukena - Rp. 25,000</label><br>
+
+												<input type="checkbox" id="sajadah" name="sajadah" value="20000">
+												<label for="checkbox">Sajadah - Rp. 20,000</label><br>
+
+												<input type="checkbox" id="topi" name="topi" value="10000">
+												<label for="checkbox">Topi - Rp. 10,000</label><br>
+												
+												<input type="checkbox" id="handuk_mandi" name="handuk_mandi" value="25000">
+												<label for="checkbox">Handuk Mandi - Rp. 25,000</label><br>
+
+												<input type="checkbox" id="bantal" name="bantal" value="20000">
+												<label for="checkbox">Bantal - Rp. 20.000</label><br>
+
+												<input type="checkbox" id="sarung_bantal" name="sarung_bantal" value="5000">
+												<label for="checkbox">Sarung Bantal/Guling - Rp. 5,000</label><br>
+
+												<input type="checkbox" id="sprei" name="sprei" value="15000">
+												<label for="checkbox">Sprei Single - Rp. 15,000</label><br>
+
+												<input type="checkbox" id="selimut" name="selimut" value="25000">
+												<label for="checkbox">Selimut - Rp. 25,000</label><br>
+
+												<input type="checkbox" id="bed_cover" name="bed_cover" value="60000">
+												<label for="checkbox">Bed Cover - Rp. 60.000</label><br>
+
+												<input type="checkbox" id="keset" name="keset" value="20000">
+												<label for="checkbox">Keset - Rp. 20,000</label><br>
+											</td>
+										</table><br>
 										<label>Jumlah Barang: <input type="text" id="jumlahBarang" name="jumlahBarang" class="jumlahBarang" value="0" readonly="readonly"/></label>
 									</div>
 								</div>
@@ -162,7 +232,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 										</label>
 									</div>
 								</div>
-								<div id="googleMaps" style="width:100%; height:380px;"></div>
+								<div id="googleMaps" style="width:100%; height:380px; border:solid black 1px;"></div>
 								<input type="hidden" id="lat" name="lat" value="">
 								<input type="hidden" id="lng" name="lng" value="">
 							</div>
@@ -235,12 +305,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 												<td id="alamat-val"></td>
 											</tr>
 											<tr class="space-row">
-												<th>Garis Lintang </th>
-												<td id="lat-val"></td>
-											</tr>
-											<tr class="space-row">
-												<th>Garis Bujur </th>
-												<td id="lng-val"></td>
+												<th>Titik Koordinat Lokasi</th>
+												<td id="coor-val"></td>
 											</tr>
 											<tr class="space-row">
 												<th>Harga Total </th>
