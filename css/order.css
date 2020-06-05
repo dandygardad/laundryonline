@@ -303,7 +303,7 @@ body {
     font-weight: 400;
     margin-bottom: 5px;
 }
-.inner .form-row .form-holder label.pay-1-label img,
+.inner .form-holder label.pay-1-label img,
 .inner .form-row .form-holder label.pay-2-label img {
     padding-top: 15px;
     padding-bottom: 8px;
@@ -394,7 +394,7 @@ body {
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
     -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;
     margin: 27px 0 -25px;
 }
 .inner .table-responsive .table {
@@ -422,6 +422,16 @@ body {
 	color: #333;
 	font-size: 16px;
 	font-weight: 400;
+}
+.harga-total,
+.total {
+  border: none;
+  font-weight: bold;
+  font-size: 22px;
+}
+.jumlahBarang {
+  border: none;
+  font-size: 15px;
 }
 .actions ul {
     list-style: none;

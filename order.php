@@ -13,11 +13,11 @@ $pdo = new database();
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //Mencegah data pesanan kosong
-	if(empty($_POST['jenis_laundry']) || empty($_POST['jumlahBeratBarang']) || empty($_POST['tanggalPengambilan']) || 
-	empty($_POST['tanggalPengantaran']) || empty($_POST['alamat']) || empty($_POST['catatan']) || empty($_POST['lat']) || empty($_POST['lng']) || empty($_POST['hargaTotal'])) {
+	if(empty($_POST['jenis_laundry']) || empty($_POST['tanggalPengambilan']) || empty($_POST['tanggalPengantaran']) || 
+	empty($_POST['alamat']) || empty($_POST['catatan']) || empty($_POST['lat']) || empty($_POST['lng']) || empty($_POST['hargaTotal'])) {
         echo '<div class="box"><div class="square">';
         echo("Field tidak boleh kosong!");
-        echo '</div></div>';
+		echo '</div></div>';
     }
 
     //Memasukkan Data Pesanan
@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		unset($_SESSION['message']);
 		$status = "Tunggu Konfirmasi";
         //Masukkan data pesanan ke database
-		$pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['jumlahBeratBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], $_POST['alamat'], 
-		$_POST['catatan'], $_POST['lat'], $_POST['lng'], $_POST['hargaTotal'], $status, $_SESSION['id']);
+		$pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['beratBarang'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], 
+		$_POST['alamat'], $_POST['catatan'], $_POST['lat'], $_POST['lng'], $_POST['hargaTotal'], $status, $_SESSION['id']);
     }
 }
 ?>
@@ -106,7 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 											<input type="checkbox" id="selimut" name="selimut" value="60000">
 											<label for="checkbox">Selimut (200 x 200 cm)</label><br>
 											<input type="checkbox" id="bed_cover" name="bed_cover" value="70000">
-											<label for="checkbox">Bed Cover (200 x 200 cm)</label><br>
+											<label for="checkbox">Bed Cover (200 x 200 cm)</label><br><br>
+											<label>Jumlah Barang: <input type="text" id="jumlahBarang" name="jumlahBarang" class="jumlahBarang" value="0" readonly="readonly"/></label>
 										</div>
 									</div>
 									<div class="form-row">
@@ -134,8 +135,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 											</label>
 										</div>
 									</div>
-									<input type="hidden" id="jumlahBeratBarang" name="jumlahBeratBarang" value="">
-									<input type="hidden" id="hargaTotal" name="hargaTotal" value="">
+									<p class="harga-total">
+       	 								<label>Harga Total: Rp. <input type="text" id="hargaTotal" name="hargaTotal" class="harga-total" value="0" readonly="readonly" /></label>
+    								</p>
 									<input type="hidden" id="harga-sementara" name="harga-sementara" value="0">
 								</div>
 							</section>
@@ -168,39 +170,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 							</h2>
 							<section>
 								<div class="inner">
-									<h3>Payment Information:</h3>
-									<div class="form-row">
-										<div class="form-holder form-holder-2">
-											<input type="radio" name="radio1" id="pay-1" value="pay-1" checked>
-											<label class="pay-1-label" for="pay-1"><img src="images/creditcard_icon.png" alt="pay-1">Credit Card</label>
-											<input type="radio" name="radio1" id="pay-2" value="pay-2">
-											<label class="pay-2-label" for="pay-2"><img src="images/paypal_icon.png" alt="pay-2">Paypal</label>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-holder form-holder-2">
-											<label class="form-row-inner">
-												<input type="text" class="form-control" id="holder" name="holder" required>
-												<span class="label">Nama Pemegang</span>
-												<span class="border"></span>
-											</label>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-holder">
-											<label class="form-row-inner">
-												<input type="text" class="form-control" id="card" name="card" required>
-												<span class="label">Nomor Kartu</span>
-												<span class="border"></span>
-											</label>
-										</div>
-										<div class="form-holder">
-											<label class="form-row-inner">
-												<input type="text" class="form-control" id="cvc" name="cvc" required>
-												<span class="label">CVC</span>
-												<span class="border"></span>
-											</label>
-										</div>
+									<h3>Informasi Pembayaran:</h3>
+									<div class="form-row table-responsive">
+										<table class="table">
+											<tbody>
+												<th class="space-row">
+													<img src="images/cod192.png" alt="pay-1">
+												</th>	
+												<tr class="space-row">
+													<input type="radio" name="radio1" id="pay" value="cod">
+													<span class="label">Cash On Delivery</span>
+												</tr>
+												<tr class="space-row">
+													<th>
+														<span class="label">Pembayaran dengan metode lain masih dalam tahap pengembangan dan pembelajaran</span>
+													</th>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</section>

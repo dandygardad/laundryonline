@@ -12,6 +12,7 @@ CREATE TABLE `Order` (
   `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `jenis_laundry` VARCHAR(8) DEFAULT NULL,
   `massa_barang` INT(3) DEFAULT NULL,
+  `jumlah_barang` INT(3) DEFAULT NULL,
   `waktu_pengambilan` DATE DEFAULT NULL,
   `waktu_pengantaran` DATE DEFAULT NULL,
   `alamat` VARCHAR (80) DEFAULT NULL,
