@@ -168,7 +168,7 @@ $(function(){
 
         // Menentukan koordinat awal peta, perbesaran, dan jenis peta
         var propertiPeta = {
-            center:new google.maps.LatLng(-5.147842,119.432448),
+            center:new google.maps.LatLng(-5.147842, 119.432448),
             zoom:13,
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };

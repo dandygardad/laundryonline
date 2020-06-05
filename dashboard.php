@@ -91,7 +91,7 @@ if(isset($_POST['cancel'])){
         <div class="container">
             <h1 id ="beranda" class="display-4">Selamat datang, <?php echo $_SESSION['name']; ?>!</h1>
             <br>
-            <p class="lead">Silahkan order laundry atau cek status laundry disini.</p>
+            <p class="lead">Silahkan order atau cek status laundry anda disini.</p>
             <br>
             <a class="btn btn-outline-success active" href="/order.php"><b>ORDER DISINI</b></a>
         </div>

@@ -104,6 +104,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKtmUDqFDJ8-D3F0nJM4bpiD4hAR-fzeo"></script>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/dash.css">
     <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
@@ -227,7 +228,8 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <li>Alamat : <?php echo $alamat; ?></li><br>
                         <li>Catatan : <?php echo $catatan; ?></li><br>
                         <li>Harga Total : <?php echo $hargaTotal; ?></li><br>
-                        <li>Lokasi :</li><br>
+                        <li>Lokasi : </li><br>
+                        <div id="googleMaps" style="width:100%;height:380px;"></div>
                         <!-- Tambahkan google maps sesuai lat lang -->
                         <form method="post">
                         <li>Status Pemesanan :</li><br>
@@ -374,4 +376,25 @@ function myFunction(){
             x.type = "password";
         }
     }
+
+
+// fungsi initialize untuk mempersiapkan peta
+function initMap() {
+
+        var propertiPeta = {
+            center:new google.maps.LatLng(<?php echo $garisLintang; ?>, <?php echo $garisBujur; ?>),
+            zoom:15,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+
+        var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
+
+        var marker=new google.maps.Marker({
+            position: new google.maps.LatLng(<?php echo $garisLintang; ?>, <?php echo $garisBujur; ?>),
+            map: peta,
+            animation: google.maps.Animation.BOUNCE
+        });
+    }
+    // event jendela di-load  
+    google.maps.event.addDomListener(window, 'load', initMap);
 </script>
