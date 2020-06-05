@@ -106,6 +106,7 @@ if(isset($_POST['cancel'])){
                     <tr>
                         <th scope="col">Jenis Laundry</th>
                         <th scope="col">Massa Barang</th>
+                        <th scope="col">Jumlah Barang</th>
                         <th scope="col">Waktu Pengambilan</th>
                         <th scope="col">Waktu Pengantaran</th>
                         <th scope="col">Alamat</th>
@@ -121,6 +122,7 @@ if(isset($_POST['cancel'])){
                     <tr>
                         <td><?=$row['jenis_laundry'] ?></td>
                         <td><?=$row['massa_barang'] ?></td>
+                        <td><?=$row['jumlah_barang'] ?></td>
                         <td><?=$row['waktu_pengambilan'] ?></td>
                         <td><?=$row['waktu_pengantaran'] ?></td>
                         <td><?=$row['alamat'] ?></td>

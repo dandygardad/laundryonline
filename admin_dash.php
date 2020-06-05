@@ -4,6 +4,7 @@ require_once "database.php";
 //Memanggil kelas database
 $pdo = new database();
 $edit_form = false;
+$view_order = false;
 
 //Jika user belum login dan membuka ini, maka langsung diarahkan ke halaman login
 if(isset($_SESSION['email']) == 0){
@@ -148,15 +149,10 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <th scope="col">ID User</th>
                         <th scope="col">Jenis Laundry</th>
                         <th scope="col">Massa Barang</th>
-                        <th scope="col">Waktu Pengambilan</th>
-                        <th scope="col">Waktu Pengantaran</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">Garis Lintang</th>
-                        <th scope="col">Garis Bujur</th>
+                        <th scope="col">Jumlah Barang</th>
                         <th scope="col">Harga Total</th>
-                        <th scope="col">Catatan</th>
                         <th scope="col">Status Pemesanan</th>
-                        <th scope="col">Action Status</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -167,20 +163,27 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <th scope="row"><?=$order['id_user'] ?></th>
                         <td><?=$order['jenis_laundry'] ?></td>
                         <td><?=$order['massa_barang'] ?></td>
-                        <td><?=$order['waktu_pengambilan'] ?></td>
-                        <td><?=$order['waktu_pengantaran'] ?></td>
-                        <td><?=$order['alamat'] ?></td>
-                        <td><?=$order['garis_lintang'] ?></td>
-                        <td><?=$order['garis_bujur'] ?></td>
+                        <td><?=$order['jumlah_barang'] ?></td>
                         <td><?=$order['harga_total'] ?></td>
-                        <td><?=$order['catatan'] ?></td>
                         <td><?=$order['status_pemesanan'] ?></td>
+                        <td>
+                            <form action="admin_dash.php?view=<?php echo $order['id_user']; ?>#pesanan" method="post">
+                                <input type="hidden" name="id" value="<?=$order['id']?>">
+                                <input type="submit" value="View" name="edit">
+                            </form>
+                        </td>
                     </tr>
                     <?php
                         }
                     ?>
                 </tbody>
             </table>
+            <?php 
+                if ($view_order == false){
+                    // Kosong
+                }
+                else
+            ?>
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid bg-white">
@@ -211,9 +214,9 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <td><?=$row['nomor_telepon']?></td>
                         <td>
                             <form action="admin_dash.php?edit=<?php echo $row['id']; ?>#customers" method="post">
-                            <input type="hidden" name="id" value="<?=$row['id']?>">
+                                <input type="hidden" name="id" value="<?=$row['id']?>">
                                 <input type="submit" value="Edit" name="edit">
-                                </form>
+                            </form>
                         </td>
                         <td>
                             <form method="post">
