@@ -22,11 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     //Memasukkan Data Pesanan
     else{
 		
-        $_SESSION['message'] = 'Pesanan Berhasil Ditambahkan!, Silahkan Kembali <a href="/index.php">Home</a>';
-        echo '<div class="box"><div class="square">';
-        echo $_SESSION['message'];
-        echo '</div></div>';
-		unset($_SESSION['message']);
+		// Menampilkan pesan dan kembali ke halaman dashboard pengguna
+		echo "<script>alert('Pesanan Berhasil Ditambahkan!, Silahkan Kembali Ke Halaman Sebelumnya'); window.location.href='index.php'; </script>";
+
 		$status = "Tunggu Konfirmasi";
         //Masukkan data pesanan ke database
 		$pdo->tambah_pesanan($_POST['jenis_laundry'], $_POST['beratBarang'], $_POST['jumlahBarang'], $_POST['tanggalPengambilan'], $_POST['tanggalPengantaran'], 
@@ -58,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 						<h3 class="heading">Laundry onLine</h3>
 						<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
 					</div>
-					<form class="form-order" action="" method="post" name="form-order" id="form-order" role="form">
+					<form class="form-order" action="" method="post" name="form-order" id="form-order">
 						<h2>
 							<span class="step-icon"><i class="zmdi zmdi-shopping-cart"></i></span>
 							<span class="step-text">Pemesanan</span>
