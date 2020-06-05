@@ -40,6 +40,12 @@ class database{
         return $result -> fetchColumn();
     }
 
+    public function banyak_pesanan(){
+        $result = $this -> pdo -> query("SELECT COUNT(*) FROM `Order`");
+        //$result -> execute();
+        return $result -> fetchColumn();
+    }
+
     public function login($email){
         $sql = "SELECT * FROM users WHERE email = :email";
         $stmt = $this -> pdo -> prepare($sql);
@@ -112,7 +118,7 @@ class database{
     }
 
     public function showPesanan(){
-        $sql = "SELECT jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, harga_total, status_pemesanan, id_user FROM `Order`";
+        $sql = "SELECT jenis_laundry, massa_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan, id_user FROM `Order`";
         $stmt = $this -> pdo -> query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

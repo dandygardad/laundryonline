@@ -19,6 +19,9 @@ if($_SESSION['email'] != 'dandygarda@gmail.com'){
 //Memunculkan data customers
 $rows = $pdo -> showData();
 
+//Memunculkan data order
+$orders = $pdo -> showPesanan();
+
 //Menghapus data
 if (isset($_POST['delete'])){
     //Jika tekan hapus admin
@@ -55,8 +58,11 @@ if(isset($_POST['cancel'])){
     header("Location: admin_dash.php#customers");
 }
 
-//Mengambil jumlah data
+//Mengambil jumlah data customers
 $banyakdata = $pdo -> banyak_data();
+
+//Mengambil jumlah data pesanan
+$banyakpesanan = $pdo -> banyak_pesanan();
 ?>
 
 <!DOCTYPE html>
@@ -125,7 +131,7 @@ $banyakdata = $pdo -> banyak_data();
             </div>
             <br>
             <div class="row">
-                <div class="col-6"><div class="tengah"><h5>pesanan</h5></div></div>
+                <div class="col-6"><div class="tengah"><h5><?php echo $banyakpesanan ?> pesanan</h5></div></div>
                 <div class="col-6"><div class="tengah"><h5><?php echo $banyakdata; ?> customers</h5></div></div>
             </div>
         </div>
@@ -136,22 +142,43 @@ $banyakdata = $pdo -> banyak_data();
             <p class="tengah">Daftar pesanan dari customers.
             </p>
             <br>
-            <table class="table">
+            <table  id="pagination" class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Nama</th>
-                        <th scope="col">E-mail</th>
-                        <th scope="col">Nomor Telepon</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">ID User</th>
+                        <th scope="col">Jenis Laundry</th>
+                        <th scope="col">Massa Barang</th>
+                        <th scope="col">Waktu Pengambilan</th>
+                        <th scope="col">Waktu Pengantaran</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Garis Lintang</th>
+                        <th scope="col">Garis Bujur</th>
+                        <th scope="col">Harga Total</th>
+                        <th scope="col">Catatan</th>
+                        <th scope="col">Status Pemesanan</th>
+                        <th scope="col">Action Status</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        foreach( $orders as $order){
+                    ?>
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th scope="row"><?=$order['id_user'] ?></th>
+                        <td><?=$order['jenis_laundry'] ?></td>
+                        <td><?=$order['massa_barang'] ?></td>
+                        <td><?=$order['waktu_pengambilan'] ?></td>
+                        <td><?=$order['waktu_pengantaran'] ?></td>
+                        <td><?=$order['alamat'] ?></td>
+                        <td><?=$order['garis_lintang'] ?></td>
+                        <td><?=$order['garis_bujur'] ?></td>
+                        <td><?=$order['harga_total'] ?></td>
+                        <td><?=$order['catatan'] ?></td>
+                        <td><?=$order['status_pemesanan'] ?></td>
                     </tr>
+                    <?php
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -162,9 +189,10 @@ $banyakdata = $pdo -> banyak_data();
             <p class="tengah">Daftar customers yang terdaftar.
             </p>
             <br>
-            <table id="pagination" class="table table-striped table-bordered">
+            <table id="pagination2" class="table table-striped table-bordered">
                 <thead>
                     <tr>
+                        <th scope="col">ID User</th>
                         <th scope="col">Nama</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Nomor Telepon</th>
@@ -177,6 +205,7 @@ $banyakdata = $pdo -> banyak_data();
                         foreach ( $rows as $row ) {
                     ?>
                     <tr>
+                        <th><?=$row['id']?></th>
                         <th><?=$row['name'] ?></th>
                         <td><?=$row['email'] ?></td>
                         <td><?=$row['nomor_telepon']?></td>
@@ -240,17 +269,23 @@ $banyakdata = $pdo -> banyak_data();
 <!-- Footer -->
 <footer class="page-footer font-small blue">
   <div class="footer-copyright text-center py-3 bg-dark text-white">© 2020 Copyright:
-    <a href="#"> Laundry OnLine</a>
+    <a href="https://laundryonlinemks.com/"> Laundry OnLine</a>
   </div>
 </footer>
 
 </div>
 </div>
 </body>
+
 <script>
+    //Menggunakan library DataTables
     $(document).ready(function() {
-    $('#pagination').DataTable();
-} );
+        $('#pagination').DataTable();
+    } );
+
+    $(document).ready(function() {
+        $('#pagination2').DataTable();
+    } );
 
 //Memunculkan password
 function myFunction(){
