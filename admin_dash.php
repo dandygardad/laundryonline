@@ -74,9 +74,9 @@ if(isset($_POST['update'])){
 }
 
 //Mengupdate data order
-if(isset($_POST['updates'])){
-    // $radio_status = $_POST['status'];
-    // $update = $pdo -> updateStatus($radio_status, $orderId);
+if(isset($_POST['update_order'])){
+    $radio_status = $_POST['status'];
+    $update = $pdo -> updateStatus($radio_status, $orderId);
     header("Location: admin_dash.php#pesanan");
 }
 
@@ -86,7 +86,7 @@ if(isset($_POST['cancel'])){
 }
 
 //Untuk tombol membatalkan edit
-if(isset($_POST['cancels'])){
+if(isset($_POST['cancel_update'])){
     header("Location: admin_dash.php#pesanan");
 }
 
@@ -229,6 +229,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <li>Harga Total : <?php echo $hargaTotal; ?></li><br>
                         <li>Lokasi :</li><br>
                         <!-- Tambahkan google maps sesuai lat lang -->
+                        <form method="post">
                         <li>Status Pemesanan :</li><br>
                         <input type="radio" id="tunggu_konfirmasi" name="status" value="Tunggu Konfirmasi" checked>
                         <label for="tunggu_konfirmasi">Tunggu Konfirmasi</label><br>
@@ -249,14 +250,17 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         //Kosong
                     } 
                     else{ ?>
-                        <p class="tengah"><input type="submit" name="updates" value="Update"/>
-                            <input type="submit" name="cancels" value="Cancel"/>
+                        <p class="tengah">
+                            <input type="submit" name="update_order" value="Update"/>
+                            <input type="submit" name="cancel_update" value="Cancel"/>
                         </p>
+                    </form>
                 <?php
                     } 
                 ?>
         </div>
     </div>
+    
     <div class="jumbotron jumbotron-fluid bg-white">
         <div class="container">
             <h1 class="tengah" id ="customers">Profil Customers</h1>
