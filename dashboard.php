@@ -59,7 +59,7 @@ if(isset($_POST['cancel'])){
 
 <body>
     <!-- Navbar -->
-<nav id="navbar-admin" class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav id="navbar-user" class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="/admin_dash.php"><b>Laundry OnLine</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -86,7 +86,7 @@ if(isset($_POST['cancel'])){
 </nav>
 
     <!-- Isi -->
-<div data-spy="scroll" data-target="#navbar-admin" data-offset="0">
+<div data-spy="scroll" data-target="#navbar-user" data-offset="0">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 id ="beranda" class="display-4">Selamat datang, <?php echo $_SESSION['name']; ?>!</h1>
@@ -101,7 +101,7 @@ if(isset($_POST['cancel'])){
             <h1 class="tengah" id ="status-order">Status Order</h1>
             <p class="tengah">Cek status laundry anda disini.</p>
             <br>
-            <table id="pagination" class="table">
+            <table id="pagination" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Jenis Laundry</th>

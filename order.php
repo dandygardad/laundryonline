@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //Mencegah data pesanan kosong
 	if(empty($_POST['jenis_laundry']) || empty($_POST['tanggalPengambilan']) || empty($_POST['tanggalPengantaran']) || 
-	empty($_POST['alamat']) || empty($_POST['catatan']) || empty($_POST['lat']) || empty($_POST['lng']) || empty($_POST['hargaTotal'])) {
+	empty($_POST['alamat']) || empty($_POST['lat']) || empty($_POST['lng']) || empty($_POST['hargaTotal'])) {
 		$message = "Harap Mengisi Semua Data!";
 		echo "<script type='text/javascript'>alert('$message');</script>";
     }
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			<div class="pemesanan">
 				<div class="order-form">
 					<div class="order-header">
-						<h3 class="heading">Laundry onLine</h3>
+						<h3 class="heading">Laundry OnLine</h3>
 						<p>Harap Mengisi Semua Data Yang Dibutuhkan</p>
 					</div>
 					<form class="form-order" action="" method="post" name="form-order" id="form-order">
@@ -206,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<label class="form-row-inner">
-											<input type="text" class="form-control" id="catatan" name="catatan" required>
+											<input type="text" class="form-control" id="catatan" name="catatan">
 											<span class="label">Tambahkan Catatan</span>
 											<span class="border"></span>
 										</label>
@@ -253,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 									<table class="table">
 										<tbody>
 											<tr class="space-row">
-												<input type="radio" class="pay" name="pay" id="cod" value="COD">
+												<input type="radio" class="pay" name="pay" id="cod" value="COD" checked>
 												<span class="label">Cash On Delivery</span>
 												<th class="space-row">
 													<img src="images/cod192.png" alt="pay-1">
