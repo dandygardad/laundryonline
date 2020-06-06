@@ -22,7 +22,7 @@ $pdo = new database();
 <head>
     <meta charset="UTF-8">
     <script src="js/jquery-3.5.1.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKtmUDqFDJ8-D3F0nJM4bpiD4hAR-fzeo"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>
     <link rel="stylesheet" href="css/index.css">
@@ -184,7 +184,7 @@ $pdo = new database();
                     <h4>
                         <b>Alamat kami :</b>
                     </h4>
-                    <p>Jalan Malino No 70 Borongloe Kecamatan Bontomarannu, Mawang, Kec. Somba Opu, Kabupaten Gowa, Sulawesi Selatan 92111</p>
+                    <p>Jl. Malino No 70, Mawang, Kec. Somba Opu, Kabupaten Gowa, Sulawesi Selatan 92119</p>
                     <br>
                     <h4>
                         <b>Nomor Telepon :</b>
@@ -214,39 +214,31 @@ $pdo = new database();
     </div>
 
     </footer>
+    <script>
+    // fungsi initialize untuk mempersiapkan peta
+    function initialize() {
+        var propertiPeta = {
+            center:new google.maps.LatLng(-5.2266391, 119.4978739),
+            zoom:15,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
 
+        var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
+
+        // membuat Marker untuk halaman konfirmasi
+        var marker=new google.maps.Marker({
+            position: new google.maps.LatLng(-5.2266391, 119.4978739),
+            map: peta,
+            animation: google.maps.Animation.BOUNCE
+        });
+    }
+    // event jendela di-load  
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    //Menggunakan DataTables
+    $(document).ready(function() {
+        $('#pagination').DataTable();
+    });
+</script>
 </body>
 </html>
-<script>
-        // fungsi initialize untuk mempersiapkan peta
-        function initialize() {
-            var propertiPeta = {
-                center:new google.maps.LatLng(-5.2266391, 119.4978739),
-                zoom:15,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
-
-            var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
-
-            // even listener ketika peta diklik
-            google.maps.event.addListener(peta, 'click', function(event) {
-
-                taruhMarker(this, event.latLng);
-
-            });
-
-            // membuat Marker untuk halaman konfirmasi
-            var marker=new google.maps.Marker({
-                position: new google.maps.LatLng(-5.2266391, 119.4978739),
-                map: peta,
-                animation: google.maps.Animation.BOUNCE
-            });
-        }
-        // event jendela di-load  
-        google.maps.event.addDomListener(window, 'load', initialize);
-
-        //Menggunakan DataTables
-        $(document).ready(function() {
-            $('#pagination').DataTable();
-        } );
-    </script>

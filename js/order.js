@@ -115,7 +115,50 @@ $(function(){
         });
         document.getElementById('list_satuan').value = items;
     });
-    
+
+    //Menampilkan peta
+    $(document).ready(function () {
+
+        // Menentukan koordinat awal peta, perbesaran, dan jenis peta
+        var propertiPeta = {
+            center: new google.maps.LatLng(-5.147842, 119.432448),
+            zoom: 14,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+
+        // Inisiasi peta
+        var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
+
+        // Menentukan penanda pada peta
+        var penanda;
+        function taruhPenanda(peta, posisiTitik){
+            if(penanda){
+                // Jika penanda pindah posisi
+                penanda.setPosition(posisiTitik);
+            } else {
+                // Buat penanda baru
+                penanda = new google.maps.Marker({
+                    position: posisiTitik,
+                    map: peta,
+                    animation: google.maps.Animation.BOUNCE
+                });
+            }
+
+            // Mengambil nilai garis lintang dan bujur dari penanda pada peta
+            var lat = posisiTitik.lat();
+            var lng = posisiTitik.lng();
+
+            // Membatasi nilai belakang koma yang ingin diambil
+            document.getElementById("lat").value = lat.toFixed(6);
+            document.getElementById("lng").value = lng.toFixed(6);
+        }
+
+        // Event listener ketika peta diklik
+        google.maps.event.addListener(peta, 'click', function(event) {
+            taruhPenanda(this, event.latLng);
+        });
+    });
+
     // Menghitung harga total satuan berdasarkan jenis material barang yang dicek serta kotak yang dicek
     function menghitungCheckbox() {
         // Mendapatkan refrensi grup checkbox
@@ -135,22 +178,22 @@ $(function(){
         }
     }
 
-      // Dipanggil saat kotak barang dicek
-      function updateHarga(e) {
-      
+    // Dipanggil saat kotak barang dicek
+    function updateHarga(e) {
+    
         // Memasukkan nilai saat ini yang tersimpan di harga-sementara, menggunakan parseFloat method untuk mengkonversi string ke number
         var val = parseFloat(document.getElementById("harga-sementara").value);
         var jml = parseFloat(document.getElementById("jumlahBarang").value);
-      
+        
         // Menambahkan nilai dari checkbox jika dicek dengan nilai saat ini begitu juga menghitunga kotak yang dicek
         if (this.checked) {
-          val += parseFloat(this.value);
-          jml += 1;
+            val += parseFloat(this.value);
+            jml += 1;
         } else {
-          val -= parseFloat(this.value);
-          jml -= 1;
+            val -= parseFloat(this.value);
+            jml -= 1;
         }
-      
+        
         // Memperbarui nilai dari harga-sementara dengan nilai terbaru sesuai dengan checkbox yang dicek serta memperbaruai jumlah barang yang dicek
         document.getElementById("harga-sementara").value = val;
         document.getElementById("jumlahBarang").value = jml;
@@ -159,47 +202,4 @@ $(function(){
 
     // Memanggil method menghitungCheckbox()
     menghitungCheckbox();
-
-    // Menentukan marker pada maps
-    var marker;
-    function taruhMarker(peta, posisiTitik){
-        if(marker){
-            // pindahkan marker
-            marker.setPosition(posisiTitik);
-        } else {
-            // buat marker baru
-            marker = new google.maps.Marker({
-                position: posisiTitik,
-                map: peta
-            });
-        }
-        // Mengambil nilai garis lintang dan bujur dari penanda pada peta
-        var lat = posisiTitik.lat();
-        var lng = posisiTitik.lng();
-
-        // Membatasi nilai belakang koma yang ingin diambil
-        document.getElementById("lat").value = lat.toFixed(6);
-        document.getElementById("lng").value = lng.toFixed(6);
-    }
-
-    // fungsi initialize untuk mempersiapkan peta
-    function initialize() {
-
-        // Menentukan koordinat awal peta, perbesaran, dan jenis peta
-        var propertiPeta = {
-            center:new google.maps.LatLng(-5.147842, 119.432448),
-            zoom:13,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-
-        // Inisiasi peta sesuai dengan Id yang telah ditentukan
-        var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
-
-        // even listener ketika peta diklik
-        google.maps.event.addListener(peta, 'click', function(event) {
-            taruhMarker(this, event.latLng);
-        });
-    }
-    // event jendela di-load  
-    google.maps.event.addDomListener(window, 'load', initialize);
 });
