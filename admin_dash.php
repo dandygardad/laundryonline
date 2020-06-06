@@ -104,7 +104,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
 
 <!DOCTYPE html>
 <head>
-    <title>Administrator</title>
+    <title>Dashboard Admin - Laundry OnLine</title>
     <script src="js/jquery-3.5.1.js"></script>
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
