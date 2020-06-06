@@ -107,12 +107,6 @@ class database{
         return $stmt;
     }
 
-    public function tampilkan_pesanan(){
-        $sql = "SELECT * FROM order";
-        $stmt = $this -> pdo ->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
     public function getHarga(){
         $sql = "SELECT * FROM harga";
         $stmt = $this -> pdo ->query($sql);
@@ -120,7 +114,7 @@ class database{
     }
 
     public function showPesanan(){
-        $sql = "SELECT id, jenis_laundry, massa_barang, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan, id_user FROM `Order`";
+        $sql = "SELECT id, jenis_laundry, massa_barang, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan, id_user, list_satuan FROM `Order`";
         $stmt = $this -> pdo -> query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

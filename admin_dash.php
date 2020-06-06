@@ -69,6 +69,7 @@ if(isset($_GET['view'])){
     $hargaTotal = $pemesanan['harga_total'];
     $statusPemesanan = $pemesanan['status_pemesanan'];
     $orderId = $pemesanan['id'];
+    $listSatuan = $pemesanan['list_satuan'];
 }
 
 //Mengupdate data customers
@@ -184,6 +185,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                     <tr>
                         <th scope="col">ID User</th>
                         <th scope="col">Jenis Laundry</th>
+                        <th scope="col">List Satuan</th>
                         <th scope="col">Massa Barang</th>
                         <th scope="col">Jumlah Barang</th>
                         <th scope="col">Harga Total</th>
@@ -198,6 +200,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                     <tr>
                         <th scope="row"><?=$order['id_user'] ?></th>
                         <td><?=$order['jenis_laundry'] ?></td>
+                        <td><?=$order['list_satuan'] ?></td>
                         <td><?=$order['massa_barang'] ?></td>
                         <td><?=$order['jumlah_barang'] ?></td>
                         <td><?=$order['harga_total'] ?></td>
@@ -225,6 +228,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                     <ul>
                         <li>ID User : <?php echo $userId; ?></li><br>
                         <li>Jenis Laundry : <?php echo $jenisLaundry; ?></li><br>
+                        <li>List Satuan : <?php echo $listSatuan; ?></li><br>
                         <li>Massa Barang : <?php echo $massaBarang; ?></li><br>
                         <li>Jumlah Barang : <?php echo $jumlahBarang; ?></li><br>
                         <li>Waktu Pengambilan : <?php echo $waktuPengambilan; ?></li><br>
@@ -234,6 +238,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <li>Harga Total : <?php echo $hargaTotal; ?></li><br>
                         <li>Lokasi : </li><br>
                         <div id="googleMaps" style="width:50%; height:440px; border:solid black 1px;"></div>
+                        <br>
                         <form method="post">
                         <li>Status Pemesanan :</li><br>
                         <input type="radio" id="tunggu_konfirmasi" name="status" value="Tunggu Konfirmasi" checked>
