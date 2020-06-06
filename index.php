@@ -212,7 +212,11 @@ $pdo = new database();
                     <h4>
                         <b>Follow Us! :</b>
                     </h4>
-                    <p><a style="color: white; text-decoration:underline;" href="https://instagram.com/laundryonlinemks">Instagram</a></p>
+                    <p><img src="images/img11.png" width="40px"><a style="color: white; " href="https://instagram.com/laundryonlinemks">LaundryOnlineGowa</a></p>
+                    <p><img src="images/img8.png" width="55px">Laundry Online Gowa</p>   
+                    <p><img src="images/img9.png" width="63px">@laundryonlineGowa</p>   
+               
+
                 </div>
                 <br>
                 <br>
