@@ -6,6 +6,10 @@ $pdo = new database();
 $edit_form = false;
 $view_order = false;
 
+//Init
+$garisLintang = "";
+$garisBujur = "";
+
 //Jika user belum login dan membuka ini, maka langsung diarahkan ke halaman login
 if(isset($_SESSION['email']) == 0){
     exit("<h1>Access Denied</h1>");
@@ -60,7 +64,7 @@ if(isset($_GET['view'])){
     $waktuPengantaran = $pemesanan['waktu_pengantaran'];
     $alamat = $pemesanan['alamat'];
     $catatan = $pemesanan['catatan'];
-    $garisLintang = $pemesanan['garis_lintang'];
+    $garisLintang = "".$pemesanan['garis_lintang'].", ";
     $garisBujur = $pemesanan['garis_bujur'];
     $hargaTotal = $pemesanan['harga_total'];
     $statusPemesanan = $pemesanan['status_pemesanan'];
@@ -175,7 +179,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
             <p class="tengah">Daftar pesanan dari customers.
             </p>
             <br>
-            <table  id="pagination" class="table">
+            <table id="pagination" class="table">
                 <thead>
                     <tr>
                         <th scope="col">ID User</th>
@@ -230,7 +234,6 @@ $banyakpesanan = $pdo -> banyak_pesanan();
                         <li>Harga Total : <?php echo $hargaTotal; ?></li><br>
                         <li>Lokasi : </li><br>
                         <div id="googleMaps" style="width:50%; height:440px; border:solid black 1px;"></div>
-                        <!-- Tambahkan google maps sesuai lat lang -->
                         <form method="post">
                         <li>Status Pemesanan :</li><br>
                         <input type="radio" id="tunggu_konfirmasi" name="status" value="Tunggu Konfirmasi" checked>
@@ -377,13 +380,12 @@ function myFunction(){
         }
     }
 
-
 // fungsi initialize untuk mempersiapkan peta
 function initMap() {
 
         // Menentukan koordinat awal peta, perbesaran, serta jenis peta
         var propertiPeta = {
-            center:new google.maps.LatLng(<?php echo $garisLintang; ?>, <?php echo $garisBujur; ?>),
+            center:new google.maps.LatLng(<?php echo $garisLintang; ?> <?php echo $garisBujur; ?>),
             zoom:15,
             mapTypeId:google.maps.MapTypeId.ROADMAP
         };
@@ -393,7 +395,7 @@ function initMap() {
         
         // Menambahkan penanda pada peta
         var marker=new google.maps.Marker({
-            position: new google.maps.LatLng(<?php echo $garisLintang; ?>, <?php echo $garisBujur; ?>),
+            position: new google.maps.LatLng(<?php echo $garisLintang; ?> <?php echo $garisBujur; ?>),
             map: peta,
             animation: google.maps.Animation.BOUNCE
         });

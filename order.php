@@ -4,11 +4,16 @@ require_once "database.php";
 // membuat objek
 $pdo = new database();
 
-// // Mengalihkan pengguna jika belum melakukan login
-// if(!isset($_SESSION['name']) || ($_SESSION['email']) || ($_SESSION['nomortelepon'])){
-// 	$_SESSION['msg'] = 'Anda Harus Melakukan Login Terlebih Dahulu Untuk Dapat Melakukan Pemesanan';
-// 	header('Location: login.php');
-// }
+//Jika user belum login dan membuka ini, maka langsung diarahkan ke halaman login
+if(isset($_SESSION['email']) == 0){
+    header('Location: login.php');
+}
+
+//Jika admin login, maka langsung diarahkan ke halaman dashboard admin
+//Ubah e-mailnya jika ingin mengganti akun admin
+if($_SESSION['email'] == 'dandygarda@gmail.com'){
+    header('Location: admin_dash.php');
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
