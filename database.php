@@ -86,9 +86,9 @@ class database{
         return $stmt;
     }
 
-    public function tambah_pesanan($jenis_laundry, $massa_barang, $jumlah_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur, $harga_total, $status, $id){
-        $sql = "INSERT INTO `Order` (jenis_laundry, massa_barang, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan, id_user)
-        VALUES (:jenis_laundry, :massa_barang, :jumlah_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur, :harga_total, :status_pemesanan, :id_user)";
+    public function tambah_pesanan($jenis_laundry, $massa_barang, $jumlah_barang, $waktu_pengambilan, $waktu_pengantaran, $alamat, $catatan, $garis_lintang, $garis_bujur, $harga_total, $status, $id, $list_satuan){
+        $sql = "INSERT INTO `Order` (jenis_laundry, massa_barang, jumlah_barang, waktu_pengambilan, waktu_pengantaran, alamat, catatan, garis_lintang, garis_bujur, harga_total, status_pemesanan, id_user, list_satuan)
+        VALUES (:jenis_laundry, :massa_barang, :jumlah_barang, :waktu_pengambilan, :waktu_pengantaran, :alamat, :catatan, :garis_lintang, :garis_bujur, :harga_total, :status_pemesanan, :id_user, :list_satuan)";
         $stmt = $this-> pdo-> prepare($sql);
         $stmt->execute(array(
           ':jenis_laundry' => $jenis_laundry,
@@ -102,7 +102,8 @@ class database{
           ':garis_bujur' => $garis_bujur,
           ':harga_total' => $harga_total,
           ':status_pemesanan' => $status,
-          ':id_user' => $id));
+          ':id_user' => $id,
+          ':list_satuan' => $list_satuan));
         return $stmt;
     }
 

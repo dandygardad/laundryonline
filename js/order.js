@@ -80,8 +80,8 @@ $(function(){
             $('#jumlahBarangText').hide();
             $('#jumlah_barang-val').hide();
             $('input:checkbox').prop('checked', false);
-            document.getElementById("jumlahBarang").value = 0;
-            document.getElementById("hargaTotal").value = 0;
+            $('#jumlahBarang').val(0);
+            $('#hargaTotal').val(0);
         } else {
             $('#kiloan_checked').hide();
             $('#satuan_checked').show();
@@ -89,8 +89,8 @@ $(function(){
             $('#berat_barang-val').hide();
             $('#jumlahBarangText').show();
             $('#jumlah_barang-val').show();
-            document.getElementById("beratBarang").value = 0;
-            document.getElementById("hargaTotal").value = 0;
+            $('#beratBarang').val(0);
+            $('#hargaTotal').val(0);
         }
     });
 
@@ -100,9 +100,21 @@ $(function(){
             var hargaPerKg = 5000;
             var massaBarang = parseInt($("#beratBarang").val());
             var hasil = hargaPerKg * massaBarang;
-            document.getElementById("hargaTotal").value = hasil;
+            $('#hargaTotal').val(hasil);
         });
-    })
+    });
+
+    // Mendapatkan id checkbox yang dicek dan menyimpannya dalam array sebelum dikirim
+    $("input:checkbox").change(function() {
+        var items = [];
+    
+        $("input:checkbox").each(function() {
+            if ($(this).is(":checked")) {
+                items.push($(this).attr("id"));
+            } 
+        });
+        document.getElementById('list_satuan').value = items;
+    });
     
     // Menghitung harga total satuan berdasarkan jenis material barang yang dicek serta kotak yang dicek
     function menghitungCheckbox() {
@@ -122,7 +134,7 @@ $(function(){
           }
         }
     }
-      
+
       // Dipanggil saat kotak barang dicek
       function updateHarga(e) {
       
@@ -189,5 +201,5 @@ $(function(){
         });
     }
     // event jendela di-load  
-    google.maps.event.addDomListener(window, 'load', initialize); 
+    google.maps.event.addDomListener(window, 'load', initialize);
 });

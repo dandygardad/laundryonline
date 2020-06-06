@@ -21,7 +21,8 @@ CREATE TABLE `Order` (
   `garis_bujur` FLOAT(10, 6) DEFAULT NULL,
   `harga_total` INT(10) DEFAULT NULL,
   `status_pemesanan` VARCHAR(50) DEFAULT NULL,
-  `id_user` INT(11) DEFAULT NULL
+  `id_user` INT(11) DEFAULT NULL,
+  `list_satuan` VARCHAR (255) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `harga` (
