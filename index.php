@@ -91,19 +91,37 @@ $pdo = new database();
             <div class="tengah">
             <h1 class="display-4">Tutorial Order</h1>
             <br>
-            <p style="text-align:left;" class="lead">Ini merupakan tata cara order laundry di website ini, mudah dan friendly.</p>
+            <p style="text-align:left;" class="lead">Pengen Order? yuk simak cara dibawah ini.</p>
             <hr class="my-4">
 
             <!-- Di row ini isinya merupakan tutorial beserta gambar dengan bentuk kotak ya -->
             <div class="row">
                 <div class="col-sm">
-                    One of three columns
+                <h6><img src="images/img3.png" width="135px"> </h6>
+                <h5>Daftar</h5>
+                <p>Pelanggan mendaftarkan dirinya pada website, dan melakukan pemesanan </p> 
+                    
                 </div>
                 <div class="col-sm">
-                    One of three columns
+                <h6><img src="images/img4.png" width="100px"> </h6>
+                <h5>Pengambilan </h5>
+                <p>pihak kami akan mengambil barang yang akan di laundry</p> 
                 </div>
                 <div class="col-sm">
-                    One of three columns
+                <h6><img src="images/img5.png" width="108px"> </h6>
+                <h5>Pencucian</h5>
+                <p>pencucian baju sesuai pemesanan</p>  
+                </div>
+                <div class="col-sm">
+                <h6><img src="images/img6.png" width="100px"> </h6>
+                <h5>Pengantaran </h5>
+                <p> pihak kami akan mengantarkan barang yang telah di laundry dirumah anda</p>
+               
+                </div>
+                <div class="col-sm">
+                <h6><img src="images/img7.png" width="160px"> </h6><br>
+                <h5>Pembayaran</h5>
+                <p>pembayaran pemesanan bisa dilakukan secara Cash on delivery</p> 
                 </div>
             </div>
             </div>
@@ -154,7 +172,7 @@ $pdo = new database();
             <p style="text-align:left;" class="lead">Yang sering ditanyakan pelanggan</p>
             <hr class="my-4">
             <h3>Bagaimana saya dapat menggunakan layanan Laundry Online?</h3>
-            <p> dapat digunakan melalui website resmi Laundry Online yang dapat akses di www.LaundryOnlineLOL.com</p>
+            <p> Dapat digunakan melalui website resmi Laundry Online yang dapat akses di www.LaundryOnlineLOL.com</p>
                 <br>
             <h3> Bagaimana Cara Order Laundry Online?</h3>
             <p>Melalui website Laundry Online, Kamu dapat membuat order dengan memilih lokasi Kamu untuk
