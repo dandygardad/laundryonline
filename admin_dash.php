@@ -148,7 +148,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
         <div class="container">
             <h1 id ="beranda" class="display-4">Selamat datang, <?php echo $_SESSION['name']; ?>!</h1>
             <br>
-            <p class="lead">Anda berada di ruang admin, cek pesanan dan profil user disini.</p>
+            <p class="lead">Anda berada di ruang admin, cek pesanan dan profil customers disini.</p>
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid bg-white">
@@ -179,7 +179,7 @@ $banyakpesanan = $pdo -> banyak_pesanan();
             <p class="tengah">Daftar pesanan dari customers.
             </p>
             <br>
-            <table id="pagination" class="table">
+            <table id="pagination" class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">ID User</th>
