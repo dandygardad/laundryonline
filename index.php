@@ -245,7 +245,7 @@ $pdo = new database();
 
         var peta = new google.maps.Map(document.getElementById("googleMaps"), propertiPeta);
 
-        // membuat Marker untuk halaman konfirmasi
+        // membuat Marker untuk lokasi laundry
         var marker=new google.maps.Marker({
             position: new google.maps.LatLng(-5.2266391, 119.4978739),
             map: peta,

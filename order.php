@@ -236,6 +236,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 										</label>
 									</div>
 								</div>
+								<span>Tentukan titik lokasi anda :</span>
+								<p></p>
 								<div id="googleMaps" style="width:100%; height:380px; border:solid black 1px;"></div>
 								<input type="hidden" id="lat" name="lat" value="">
 								<input type="hidden" id="lng" name="lng" value="">
@@ -280,6 +282,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 								<div class="form-row table-responsive">
 									<table class="table">
 										<tbody>
+											
 											<tr class="space-row">
 												<th>Jenis Laundry </th>
 												<td id="jenis_laundry-val"></td>
@@ -309,8 +312,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 												<td id="alamat-val"></td>
 											</tr>
 											<tr class="space-row">
-												<th>Titik Koordinat Lokasi</th>
-												<td id="coor-val"></td>
+												<th>
+													<input type="checkbox" id="tampilkanPeta" name="tampilkanPeta" value="">
+													<label for="checkbox">Tampilkan Peta</label>
+												</th>
+												<td>
+													<div id="googleMapsK" style="width:100%; height:200px; display:none;"></div>
+												</td>
 											</tr>
 											<tr class="space-row">
 												<th>Harga Total </th>

@@ -38,6 +38,10 @@ $(function(){
             var hargaTotalSatuan = parseFloat($('#harga-sementara').val());
             var hargaTotalK;
             var metodePembayaran = $("input[name='pay']:checked").val();
+
+            // Menutup peta jika berpindah section
+            $("input[name='tampilkanPeta']").prop('checked', false);
+            $('#googleMapsK').hide();
             
             // Menghitung harga total jika kiloan berdasarkan berat barang dan jika satuan maka berdasarkan jenis material yang di laundry,
             // serta mengatur ulang nilai beratBarang dan jumlahBarang
@@ -96,7 +100,7 @@ $(function(){
 
     // Menghitung harga total kiloan
     $(document).ready(function() {
-        $('input[name=beratBarang').change(function(e) {
+        $("input[name='beratBarang']").change(function(e) {
             var hargaPerKg = 5000;
             var massaBarang = parseInt($("#beratBarang").val());
             var hasil = hargaPerKg * massaBarang;
@@ -116,7 +120,7 @@ $(function(){
         document.getElementById('list_satuan').value = items;
     });
 
-    //Menampilkan peta
+    //Menampilkan peta untuk menentukan titik lokasi
     $(document).ready(function () {
 
         // Menentukan koordinat awal peta, perbesaran, dan jenis peta
@@ -156,6 +160,45 @@ $(function(){
         google.maps.event.addListener(peta, 'click', function(event) {
             taruhPenanda(this, event.latLng);
         });
+    });
+
+    //Menampilkan peta untuk menampilkan titik lokasi yang telah ditentukan
+    $(document).ready(function () {
+
+        //Menampilkan peta jika diinginkan
+        $("input[name='tampilkanPeta']").change(function(){
+            if ($(this).is(":checked")) {
+                $('#googleMapsK').show();    
+                initialize();
+            } else {
+                $('#googleMapsK').hide();
+            }
+        });
+
+        $('input:checkbox').prop('checked', false);
+
+        function initialize()  {
+
+            // Mengambil nilai koordinat yang telah ditentukan
+            var lat = $('#lat').val();
+            var lng = $('#lng').val();
+
+            // Menentukan koordinat peta, perbesaran, dan jenis peta
+            var propertiPeta = {
+                center: new google.maps.LatLng(lat,lng),
+                zoom: 13,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            }
+    
+            // Inisiasi peta
+            var peta = new google.maps.Map(document.getElementById("googleMapsK"), propertiPeta);
+
+            // membuat Marker untuk halaman konfirmasi
+            marker =new google.maps.Marker({
+                    position: new google.maps.LatLng(lat,lng),
+                    map: peta
+            });
+        }
     });
 
     // Menghitung harga total satuan berdasarkan jenis material barang yang dicek serta kotak yang dicek
