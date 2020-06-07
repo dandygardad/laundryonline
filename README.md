@@ -1,4 +1,4 @@
-# Nama Aplikasi/Project
+# Laundry OnLine
 
 ### Anggota Kelompok :
 1. Nur Hasana Abunawas / D121181002
