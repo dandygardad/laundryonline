@@ -21,15 +21,15 @@ $pdo = new database();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="js/jquery-3.5.1.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKtmUDqFDJ8-D3F0nJM4bpiD4hAR-fzeo"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap4.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap4.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKtmUDqFDJ8-D3F0nJM4bpiD4hAR-fzeo"></script>
     <title>LAUNDRY ONLINE</title>
 </head>
 
@@ -115,7 +115,7 @@ $pdo = new database();
                 <div class="col-sm">
                 <h6><img src="images/img6.png" width="100px"> </h6>
                 <h5>Pengantaran </h5>
-                <p> pihak kami akan mengantarkan barang yang telah di laundry dirumah anda</p>
+                <p> pihak kami akan mengantarkan barang yang telah di laundry di rumah anda</p>
                
                 </div>
                 <div class="col-sm">
@@ -207,7 +207,7 @@ $pdo = new database();
                     <h4>
                         <b>Nomor Telepon :</b>
                     </h4>
-                    <p>(021) 227 1XX XX</p>
+                    <p>(0411) 227 1XX XX</p>
                     <br>
                     <h4>
                         <b>Follow Us! :</b>
@@ -230,11 +230,9 @@ $pdo = new database();
 
     <!-- Footer -->
     <footer class="page-footer font-small bg-white">
-
-    <div class="footer-copyright text-center py-3">© 2020
-        <a href="https://laundryonlinemks.com/"> Laundry OnLine</a>
-    </div>
-
+        <div class="footer-copyright text-center py-3">Copyright © 2020
+            <a href="https://laundryonlinemks.com/"> Laundry OnLine</a>
+        </div>
     </footer>
     <script>
     // fungsi initialize untuk mempersiapkan peta
