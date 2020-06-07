@@ -11,7 +11,7 @@ if(isset($_SESSION['email']) == 0){
 
 //Jika admin login, maka langsung diarahkan ke halaman dashboard admin
 //Ubah e-mailnya jika ingin mengganti akun admin
-if($_SESSION['email'] == 'dandygarda@gmail.com'){
+if($_SESSION['email'] == 'admin@laundryonlinemks.com'){
     header('Location: admin_dash.php');
 }
 

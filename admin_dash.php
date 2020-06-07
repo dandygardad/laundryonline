@@ -17,7 +17,7 @@ if(isset($_SESSION['email']) == 0){
 
 //Akses selain e-mail admin akan ditolak
 //Ubah e-mailnya jika ingin mengganti akun admin
-if($_SESSION['email'] != 'dandygarda@gmail.com'){
+if($_SESSION['email'] != 'admin@laundryonlinemks.com'){
     exit("<h1>Access Denied</h1>");
 }
 
@@ -31,7 +31,7 @@ $orders = $pdo -> showPesanan();
 if (isset($_POST['delete'])){
     //Jika tekan hapus admin
     //Ubah nomor jika id admin berubah
-    if($_POST['id'] == 49){
+    if($_POST['id'] == 1){
         echo('<div class="alert alert-danger" role="alert">');
         echo('Tidak bisa hapus administrator');
         echo('</div>');
