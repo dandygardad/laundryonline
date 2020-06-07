@@ -139,8 +139,7 @@ $(function(){
                 // Buat penanda baru
                 penanda = new google.maps.Marker({
                     position: posisiTitik,
-                    map: peta,
-                    animation: google.maps.Animation.BOUNCE
+                    map: peta
                 });
             }
 
@@ -149,8 +148,8 @@ $(function(){
             var lng = posisiTitik.lng();
 
             // Membatasi nilai belakang koma yang ingin diambil
-            document.getElementById("lat").value = lat.toFixed(6);
-            document.getElementById("lng").value = lng.toFixed(6);
+            $('#lat').val(lat.toFixed(6));
+            $('#lng').val(lng.toFixed(6));
         }
 
         // Event listener ketika peta diklik

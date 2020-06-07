@@ -149,18 +149,18 @@ $banyakpesanan = $pdo -> banyak_pesanan();
         <div class="container">
             <h1 id ="beranda" class="display-4">Selamat datang, <?php echo $_SESSION['name']; ?>!</h1>
             <br>
-            <p class="lead">Anda berada di ruang admin, cek pesanan dan profil customers disini.</p>
+            <p class="lead">Anda berada di ruang admin, cek pesanan dan profil pelanggan disini.</p>
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid bg-white">
         <div class="container">
             <h1 class="tengah" id ="statistik">Statistik</h1>
-            <p class="tengah">Melihat berapa banyak pesanan dan customers terdaftar.
+            <p class="tengah">Melihat berapa banyak pesanan dan pelanggan yang terdaftar.
             </p>
             <br>
             <div class="row">
                 <div class="col-6"><div class="tengah"><h3>Pesanan</h3></div></div>
-                <div class="col-6"><div class="tengah"><h3>Customers</h3></div></div>
+                <div class="col-6"><div class="tengah"><h3>Pelanggan</h3></div></div>
             </div>
             <br>
             <div class="row">
@@ -170,14 +170,14 @@ $banyakpesanan = $pdo -> banyak_pesanan();
             <br>
             <div class="row">
                 <div class="col-6"><div class="tengah"><h5><?php echo $banyakpesanan ?> pesanan</h5></div></div>
-                <div class="col-6"><div class="tengah"><h5><?php echo $banyakdata; ?> customers</h5></div></div>
+                <div class="col-6"><div class="tengah"><h5><?php echo $banyakdata; ?> pelanggan</h5></div></div>
             </div>
         </div>
     </div>
     <div class="jumbotron jumbotron-fluid bg-light">
         <div class="container">
             <h1 class="tengah" id ="pesanan">Pesanan</h1>
-            <p class="tengah">Daftar pesanan dari customers.
+            <p class="tengah">Daftar pesanan dari pelanggan.
             </p>
             <br>
             <table id="pagination" class="table table-striped table-bordered">
@@ -273,8 +273,8 @@ $banyakpesanan = $pdo -> banyak_pesanan();
     
     <div class="jumbotron jumbotron-fluid bg-white">
         <div class="container">
-            <h1 class="tengah" id ="customers">Profil Customers</h1>
-            <p class="tengah">Daftar customers yang terdaftar.
+            <h1 class="tengah" id ="customers">Profil Pelanggan</h1>
+            <p class="tengah">Daftar pelanggan yang terdaftar.
             </p>
             <br>
             <table id="pagination2" class="table table-striped table-bordered">

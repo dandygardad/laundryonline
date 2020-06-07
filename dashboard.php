@@ -140,7 +140,7 @@ if(isset($_POST['cancel'])){
     <div class="jumbotron jumbotron-fluid bg-dark text-light">
         <div class="container">
             <h1 class="tengah" id ="profil">Informasi Profil</h1>
-            <p class="tengah">Informasi tentang nama, e-mail, nomor telepon yang dipakai.</p>
+            <p class="tengah">Informasi tentang Nama, E-mail, dan Nomor Telepon yang digunakan.</p>
             <br>
             <ul>
                 <li>Nama : <?php echo ($_SESSION['name']) ?></li>

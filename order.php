@@ -4,7 +4,7 @@ require_once "database.php";
 // membuat objek
 $pdo = new database();
 
-//Jika user belum login dan membuka ini, maka langsung diarahkan ke halaman login
+//Jika user belum login dan membuka halaman order, maka langsung diarahkan ke halaman login
 if(isset($_SESSION['email']) == 0){
     header('Location: login.php');
 }
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 											<li>Minimum Order 4 Kg</li>
 										</ol>
 										<label class="form-row-inner">
-											<input type="number" class="form-control" id="beratBarang" name="beratBarang" min="4" max="50" required>
+											<input type="number" class="form-control" id="beratBarang" name="beratBarang" min="4" max="50">
 											<span class="label">Berat Barang (Kg)</span>
 											<span class="border"></span>
 										</label>
@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 									<div class="form-holder form-holder-1">
 										<label class="form-row-inner" for="tanggalPengambilan">Pilih Tanggal Pengambilan :</label>
 										<div class="form-holder form-holder-1">
-											<input type="date" id="tanggalPengambilan" name="tanggalPengambilan">
+											<input type="date" id="tanggalPengambilan" name="tanggalPengambilan" required>
 										</div>
 									</div>
 								</div>
@@ -199,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 									<div class="form-holder form-holder-1">
 										<label class="form-row-inner" for="tanggalPengantaran">Pilih Tanggal Pengantaran :</label>
 										<div class="form-holder form-holder-1">
-											<input type="date" id="tanggalPengantaran" name="tanggalPengantaran">
+											<input type="date" id="tanggalPengantaran" name="tanggalPengantaran" required>
 										</div>
 									</div>
 								</div>
