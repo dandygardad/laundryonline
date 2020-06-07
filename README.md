@@ -15,9 +15,9 @@ Tuliskan proses instalasi secara umum dan setting yang diperlukan untuk mengguna
 
 
 ### Framework dan Library (opsional)
-1. Library A digunakan untuk ....
-2. Framework B digunakan untuk ...
+1. Library jQuery digunakan untuk membuat form step order bekerja
+2. Framework Bootstrap digunakan untuk mempercantik tampilan website
 
 
 ### API (opsional)
-1. [nama API](https://alamat.API)
+1. [Google Maps](https://maps.googleapis.com/maps/api/js)

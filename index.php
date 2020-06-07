@@ -24,10 +24,10 @@ $pdo = new database();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="bootstrap/dataTables.bootstrap4.min.css">
     <script src="js/jquery-3.5.1.js"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap4.min.js"></script>
+    <script src="bootstrap/jquery.dataTables.min.js"></script>
+    <script src="bootstrap/dataTables.bootstrap4.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKtmUDqFDJ8-D3F0nJM4bpiD4hAR-fzeo"></script>
     <title>LAUNDRY ONLINE</title>
@@ -172,7 +172,7 @@ $pdo = new database();
             <p style="text-align:left;" class="lead">Yang sering ditanyakan pelanggan</p>
             <hr class="my-4">
             <h3>Bagaimana saya dapat menggunakan layanan Laundry Online?</h3>
-            <p> Dapat digunakan melalui website resmi Laundry Online yang dapat akses di www.LaundryOnlineLOL.com</p>
+            <p> Dapat digunakan melalui website resmi Laundry Online yang dapat akses di www.LaundryOnlineMks.com</p>
                 <br>
             <h3> Bagaimana Cara Order Laundry Online?</h3>
             <p>Melalui website Laundry Online, Kamu dapat membuat order dengan memilih lokasi Kamu untuk

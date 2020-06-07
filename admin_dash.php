@@ -107,12 +107,12 @@ $banyakpesanan = $pdo -> banyak_pesanan();
     <title>Dashboard Admin - Laundry OnLine</title>
     <script src="js/jquery-3.5.1.js"></script>
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap4.min.js"></script>
+    <script src="bootstrap/jquery.dataTables.min.js"></script>
+    <script src="bootstrap/dataTables.bootstrap4.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKtmUDqFDJ8-D3F0nJM4bpiD4hAR-fzeo"></script>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/dash.css">
-    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="bootstrap/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
