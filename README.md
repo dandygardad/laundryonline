@@ -1,9 +1,9 @@
 # Laundry OnLine
 
 ### Anggota Kelompok :
-1. Nur Hasana Abunawas / D121181002
-2. Ichsanul Alifwan / D121181020
-3. Dandy Garda Dirgantara / D121181506
+1. Nur Hasana Abunawas
+2. Ichsanul Alifwan
+3. Dandy Garda Dirgantara
 
 
 ### Manual dan Fitur 
