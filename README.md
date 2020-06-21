@@ -1,6 +1,6 @@
 # Laundry OnLine
 
-### Anggota Kelompok :
+### Dibuat oleh :
 1. Nur Hasana Abunawas
 2. Ichsanul Alifwan
 3. Dandy Garda Dirgantara
