@@ -3,3 +3,7 @@ bootstrap/js/* linguist-vendored
 bootstrap/* linguist-vendored
 css/* linguist-vendored
 js/* linguist-vendored
+fonts/Roboto/* linguist-vendored
+fonts/material-design-iconic-font/css/* linguist-vendored
+fonts/material-design-iconic-font/fonts/* linguist-vendored
+js/* linguist-vendored
